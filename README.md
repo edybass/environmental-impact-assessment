@@ -1,664 +1,281 @@
-# Environmental Impact Assessment
+# 🌿 Environmental Impact Assessment Tool
 
-EIA automation tool for construction projects
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![UAE Compliant](https://img.shields.io/badge/UAE-Compliant-green.svg)](https://www.moccae.gov.ae/)
+[![KSA Compliant](https://img.shields.io/badge/KSA-Compliant-green.svg)](https://www.mewa.gov.sa/)
 
-## Overview
-This project implements eia automation tool for construction projects using Python and modern data science tools.
+> Professional Environmental Impact Assessment automation tool designed for construction and development projects in UAE and Saudi Arabia. Streamline your EIA process with AI-powered analysis and automated compliance checking.
 
-## Technologies Used
-- pandas
-- numpy
-- dash
-- plotly
+## 🌟 Key Features
 
-## Installation
+### 📋 Comprehensive Assessment Modules
+- **Pre-Construction Analysis**: Baseline environmental conditions
+- **Construction Phase**: Noise, dust, vibration, emissions monitoring
+- **Operation Phase**: Long-term environmental impacts
+- **Decommissioning**: End-of-life environmental considerations
+
+### 🏗️ Construction-Specific Features
+- **Noise Modeling**: 3D noise propagation with barriers
+- **Dust Dispersion**: PM10/PM2.5 modeling for arid climates
+- **Traffic Impact**: Construction vehicle movement analysis
+- **Waste Management**: Construction waste tracking and disposal
+
+### 🌍 Regional Adaptations
+- **Desert Ecosystem Assessment**: Flora/fauna specific to Gulf region
+- **Water Scarcity Analysis**: Crucial for UAE/KSA projects
+- **Heat Island Effect**: Urban development in extreme climates
+- **Sandstorm Resilience**: Unique to Middle East region
+
+### 📊 Advanced Analytics
+- **AI-Powered Predictions**: Machine learning for impact forecasting
+- **Satellite Integration**: Remote sensing for large projects
+- **Real-time Monitoring**: IoT sensor integration
+- **Climate Risk Assessment**: Future-proofing developments
+
+### 📑 Automated Reporting
+- **Regulatory Compliance**: UAE Federal Law No. 24, KSA Environmental Law
+- **Multi-language**: Arabic/English reports
+- **Interactive Dashboards**: Web-based visualization
+- **Stakeholder Reports**: Customized for different audiences
+
+## 🚀 Live Demo
+
+**Try it now: [https://edybass.github.io/environmental-impact-assessment/](https://edybass.github.io/environmental-impact-assessment/)**
+
+## 🛠️ Installation
+
+### Quick Start (Web Interface)
+Visit the [live tool](https://edybass.github.io/environmental-impact-assessment/) - no installation required!
+
+### For Development
+
 ```bash
+# Clone repository
+git clone https://github.com/edybass/environmental-impact-assessment.git
+cd environmental-impact-assessment
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Run tests
+pytest tests/
+
+# Start development server
+python -m src.api.app
 ```
 
-## Usage
+## 💡 Usage Examples
+
+### Basic Environmental Screening
+
 ```python
-from main import *
-# See individual modules for detailed usage
+from src.assessment import EIAScreening
+
+# Initialize screening tool
+screening = EIAScreening(project_type="construction", location="Dubai")
+
+# Run initial assessment
+results = screening.assess({
+    "project_size": 50000,  # m²
+    "duration": 24,  # months
+    "sensitive_receptors": ["school", "hospital"],
+    "water_usage": 1000  # m³/day
+})
+
+print(f"EIA Required: {results.eia_required}")
+print(f"Key Concerns: {results.key_concerns}")
 ```
 
-## Project Structure
+### Construction Impact Analysis
+
+```python
+from src.analysis import ConstructionImpact
+
+# Analyze construction impacts
+impact = ConstructionImpact()
+
+# Noise assessment
+noise_results = impact.assess_noise(
+    equipment=["excavator", "pile_driver", "concrete_mixer"],
+    working_hours="07:00-19:00",
+    nearest_receptor_distance=50  # meters
+)
+
+# Dust assessment
+dust_results = impact.assess_dust(
+    soil_type="sandy",
+    moisture_content=5,  # %
+    wind_speed=15,  # km/h
+    mitigation_measures=["water_spraying", "barriers"]
+)
 ```
-├── README.md
-├── requirements.txt
-├── src/
-│   ├── __init__.py
-│   └── impact_calculator.py
-├── tests/
-│   └── test_impact_calculator.py
-└── docs/
-    └── documentation.md
+
+### Compliance Checking
+
+```python
+from src.compliance import UAECompliance, KSACompliance
+
+# Check UAE compliance
+uae_checker = UAECompliance()
+compliance = uae_checker.check_all(project_data)
+
+if not compliance.is_compliant:
+    print("Non-compliance issues:")
+    for issue in compliance.issues:
+        print(f"- {issue.regulation}: {issue.description}")
 ```
 
-## Author
-Edy Bassil
-
-## License
-MIT License
-
-<!-- Update: 2023-04-05 -->
-
-<!-- Update: 2023-04-16 -->
-
-<!-- Update: 2023-04-17 -->
-
-<!-- Update: 2023-04-18 -->
-
-<!-- Update: 2023-04-21 -->
-
-<!-- Update: 2023-04-25 -->
-
-<!-- Update: 2023-04-26 -->
-
-<!-- Update: 2023-05-02 -->
-
-<!-- Update: 2023-05-06 -->
-
-<!-- Update: 2023-05-09 -->
-
-<!-- Update: 2023-05-10 -->
-
-<!-- Update: 2023-05-13 -->
-
-<!-- Update: 2023-05-17 -->
-
-<!-- Update: 2023-05-18 -->
-
-<!-- Update: 2023-05-19 -->
-
-<!-- Update: 2023-05-24 -->
-
-<!-- Update: 2023-05-25 -->
-
-<!-- Update: 2023-05-29 -->
-
-<!-- Update: 2023-05-31 -->
-
-<!-- Update: 2023-06-05 -->
-
-<!-- Update: 2023-06-07 -->
-
-<!-- Update: 2023-06-08 -->
-
-<!-- Update: 2023-06-08 -->
-
-<!-- Update: 2023-06-08 -->
-
-<!-- Update: 2023-06-10 -->
-
-<!-- Update: 2023-06-10 -->
-
-<!-- Update: 2023-06-19 -->
-
-<!-- Update: 2023-06-19 -->
-
-<!-- Update: 2023-06-20 -->
-
-<!-- Update: 2023-06-21 -->
-
-<!-- Update: 2023-06-23 -->
-
-<!-- Update: 2023-06-23 -->
-
-<!-- Update: 2023-06-25 -->
-
-<!-- Update: 2023-07-03 -->
-
-<!-- Update: 2023-07-13 -->
-
-<!-- Update: 2023-07-13 -->
-
-<!-- Update: 2023-07-13 -->
-
-<!-- Update: 2023-07-15 -->
-
-<!-- Update: 2023-07-15 -->
-
-<!-- Update: 2023-07-25 -->
-
-<!-- Update: 2023-07-26 -->
-
-<!-- Update: 2023-07-26 -->
-
-<!-- Update: 2023-07-28 -->
-
-<!-- Update: 2023-08-10 -->
-
-<!-- Update: 2023-08-12 -->
-
-<!-- Update: 2023-08-14 -->
-
-<!-- Update: 2023-08-16 -->
-
-<!-- Update: 2023-08-16 -->
-
-<!-- Update: 2023-08-22 -->
-
-<!-- Update: 2023-08-23 -->
-
-<!-- Update: 2023-08-25 -->
-
-<!-- Update: 2023-08-28 -->
-
-<!-- Update: 2023-08-30 -->
-
-<!-- Update: 2023-08-30 -->
-
-<!-- Update: 2023-09-01 -->
-
-<!-- Update: 2023-09-07 -->
-
-<!-- Update: 2023-09-08 -->
-
-<!-- Update: 2023-09-15 -->
-
-<!-- Update: 2023-09-17 -->
-
-<!-- Update: 2023-09-18 -->
-
-<!-- Update: 2023-09-21 -->
-
-<!-- Update: 2023-09-25 -->
-
-<!-- Update: 2023-09-27 -->
-
-<!-- Update: 2023-09-28 -->
-
-<!-- Update: 2023-09-28 -->
-
-<!-- Update: 2023-10-03 -->
-
-<!-- Update: 2023-10-09 -->
-
-<!-- Update: 2023-10-09 -->
-
-<!-- Update: 2023-10-13 -->
-
-<!-- Update: 2023-10-17 -->
-
-<!-- Update: 2023-10-21 -->
-
-<!-- Update: 2023-10-21 -->
-
-<!-- Update: 2023-10-24 -->
-
-<!-- Update: 2023-10-29 -->
-
-<!-- Update: 2023-10-31 -->
-
-<!-- Update: 2023-10-31 -->
-
-<!-- Update: 2023-11-04 -->
-
-<!-- Update: 2023-11-05 -->
-
-<!-- Update: 2023-11-05 -->
-
-<!-- Update: 2023-11-08 -->
-
-<!-- Update: 2023-11-10 -->
-
-<!-- Update: 2023-11-16 -->
-
-<!-- Update: 2023-11-17 -->
-
-<!-- Update: 2023-11-17 -->
-
-<!-- Update: 2023-11-20 -->
-
-<!-- Update: 2023-11-22 -->
-
-<!-- Update: 2023-11-26 -->
-
-<!-- Update: 2023-12-01 -->
-
-<!-- Update: 2023-12-11 -->
-
-<!-- Update: 2023-12-11 -->
-
-<!-- Update: 2023-12-12 -->
-
-<!-- Update: 2023-12-13 -->
-
-<!-- Update: 2023-12-14 -->
-
-<!-- Update: 2023-12-16 -->
-
-<!-- Update: 2023-12-17 -->
-
-<!-- Update: 2023-12-22 -->
-
-<!-- Update: 2023-12-22 -->
-
-<!-- Update: 2023-12-22 -->
-
-<!-- Update: 2023-12-26 -->
-
-<!-- Update: 2023-12-26 -->
-
-<!-- Update: 2023-12-27 -->
-
-<!-- Update: 2023-12-31 -->
-
-<!-- Update: 2024-01-02 -->
-
-<!-- Update: 2024-01-04 -->
-
-<!-- Update: 2024-01-05 -->
-
-<!-- Update: 2024-01-06 -->
-
-<!-- Update: 2024-01-09 -->
-
-<!-- Update: 2024-01-09 -->
-
-<!-- Update: 2024-01-11 -->
-
-<!-- Update: 2024-01-14 -->
-
-<!-- Update: 2024-01-15 -->
-
-<!-- Update: 2024-01-19 -->
-
-<!-- Update: 2024-01-20 -->
-
-<!-- Update: 2024-01-22 -->
-
-<!-- Update: 2024-01-24 -->
-
-<!-- Update: 2024-01-26 -->
-
-<!-- Update: 2024-01-31 -->
-
-<!-- Update: 2024-01-31 -->
-
-<!-- Update: 2024-02-02 -->
-
-<!-- Update: 2024-02-05 -->
-
-<!-- Update: 2024-02-05 -->
-
-<!-- Update: 2024-02-07 -->
-
-<!-- Update: 2024-02-08 -->
-
-<!-- Update: 2024-02-13 -->
-
-<!-- Update: 2024-02-14 -->
-
-<!-- Update: 2024-02-23 -->
-
-<!-- Update: 2024-02-23 -->
-
-<!-- Update: 2024-02-25 -->
-
-<!-- Update: 2024-02-25 -->
-
-<!-- Update: 2024-03-03 -->
-
-<!-- Update: 2024-03-03 -->
-
-<!-- Update: 2024-03-06 -->
-
-<!-- Update: 2024-03-07 -->
-
-<!-- Update: 2024-03-09 -->
-
-<!-- Update: 2024-03-13 -->
-
-<!-- Update: 2024-03-14 -->
-
-<!-- Update: 2024-03-15 -->
-
-<!-- Update: 2024-03-15 -->
-
-<!-- Update: 2024-03-20 -->
-
-<!-- Update: 2024-03-20 -->
-
-<!-- Update: 2024-03-21 -->
-
-<!-- Update: 2024-03-26 -->
-
-<!-- Update: 2024-03-27 -->
-
-<!-- Update: 2024-03-29 -->
-
-<!-- Update: 2024-03-31 -->
-
-<!-- Update: 2024-03-31 -->
-
-<!-- Update: 2024-04-01 -->
-
-<!-- Update: 2024-04-03 -->
-
-<!-- Update: 2024-04-04 -->
-
-<!-- Update: 2024-04-05 -->
-
-<!-- Update: 2024-04-08 -->
-
-<!-- Update: 2024-04-09 -->
-
-<!-- Update: 2024-04-17 -->
-
-<!-- Update: 2024-04-18 -->
-
-<!-- Update: 2024-04-18 -->
-
-<!-- Update: 2024-04-19 -->
-
-<!-- Update: 2024-04-19 -->
-
-<!-- Update: 2024-04-20 -->
-
-<!-- Update: 2024-04-24 -->
-
-<!-- Update: 2024-04-25 -->
-
-<!-- Update: 2024-04-25 -->
-
-<!-- Update: 2024-04-26 -->
-
-<!-- Update: 2024-04-29 -->
-
-<!-- Update: 2024-04-30 -->
-
-<!-- Update: 2024-04-30 -->
-
-<!-- Update: 2024-05-06 -->
-
-<!-- Update: 2024-05-10 -->
-
-<!-- Update: 2024-05-14 -->
-
-<!-- Update: 2024-05-17 -->
-
-<!-- Update: 2024-05-20 -->
-
-<!-- Update: 2024-05-21 -->
-
-<!-- Update: 2024-05-28 -->
-
-<!-- Update: 2024-06-03 -->
-
-<!-- Update: 2024-06-06 -->
-
-<!-- Update: 2024-06-08 -->
-
-<!-- Update: 2024-06-09 -->
-
-<!-- Update: 2024-06-13 -->
-
-<!-- Update: 2024-06-18 -->
-
-<!-- Update: 2024-06-20 -->
-
-<!-- Update: 2024-06-20 -->
-
-<!-- Update: 2024-06-26 -->
-
-<!-- Update: 2024-06-27 -->
-
-<!-- Update: 2024-07-01 -->
-
-<!-- Update: 2024-07-02 -->
-
-<!-- Update: 2024-07-03 -->
-
-<!-- Update: 2024-07-04 -->
-
-<!-- Update: 2024-07-06 -->
-
-<!-- Update: 2024-07-09 -->
-
-<!-- Update: 2024-07-11 -->
-
-<!-- Update: 2024-07-15 -->
-
-<!-- Update: 2024-07-16 -->
-
-<!-- Update: 2024-07-18 -->
-
-<!-- Update: 2024-07-19 -->
-
-<!-- Update: 2024-07-22 -->
-
-<!-- Update: 2024-07-25 -->
-
-<!-- Update: 2024-07-29 -->
-
-<!-- Update: 2024-07-29 -->
-
-<!-- Update: 2024-08-01 -->
-
-<!-- Update: 2024-08-02 -->
-
-<!-- Update: 2024-08-04 -->
-
-<!-- Update: 2024-08-06 -->
-
-<!-- Update: 2024-08-12 -->
-
-<!-- Update: 2024-08-19 -->
-
-<!-- Update: 2024-08-20 -->
-
-<!-- Update: 2024-08-20 -->
-
-<!-- Update: 2024-08-22 -->
-
-<!-- Update: 2024-08-23 -->
-
-<!-- Update: 2024-08-25 -->
-
-<!-- Update: 2024-08-26 -->
-
-<!-- Update: 2024-08-29 -->
-
-<!-- Update: 2024-09-01 -->
-
-<!-- Update: 2024-09-02 -->
-
-<!-- Update: 2024-09-03 -->
-
-<!-- Update: 2024-09-07 -->
-
-<!-- Update: 2024-09-09 -->
-
-<!-- Update: 2024-09-11 -->
-
-<!-- Update: 2024-09-12 -->
-
-<!-- Update: 2024-09-12 -->
-
-<!-- Update: 2024-09-13 -->
-
-<!-- Update: 2024-09-17 -->
-
-<!-- Update: 2024-09-17 -->
-
-<!-- Update: 2024-09-18 -->
-
-<!-- Update: 2024-09-19 -->
-
-<!-- Update: 2024-09-19 -->
-
-<!-- Update: 2024-09-20 -->
-
-<!-- Update: 2024-09-20 -->
-
-<!-- Update: 2024-09-25 -->
-
-<!-- Update: 2024-09-26 -->
-
-<!-- Update: 2024-09-26 -->
-
-<!-- Update: 2024-09-27 -->
-
-<!-- Update: 2024-09-28 -->
-
-<!-- Update: 2024-09-29 -->
-
-<!-- Update: 2024-09-30 -->
-
-<!-- Update: 2024-10-03 -->
-
-<!-- Update: 2024-10-03 -->
-
-<!-- Update: 2024-10-03 -->
-
-<!-- Update: 2024-10-07 -->
-
-<!-- Update: 2024-10-11 -->
-
-<!-- Update: 2024-10-13 -->
-
-<!-- Update: 2024-10-18 -->
-
-<!-- Update: 2024-10-20 -->
-
-<!-- Update: 2024-10-20 -->
-
-<!-- Update: 2024-10-22 -->
-
-<!-- Update: 2024-10-24 -->
-
-<!-- Update: 2024-10-24 -->
-
-<!-- Update: 2024-10-25 -->
-
-<!-- Update: 2024-10-28 -->
-
-<!-- Update: 2024-11-13 -->
-
-<!-- Update: 2024-11-13 -->
-
-<!-- Update: 2024-11-14 -->
-
-<!-- Update: 2024-11-14 -->
-
-<!-- Update: 2024-11-15 -->
-
-<!-- Update: 2024-11-15 -->
-
-<!-- Update: 2024-11-16 -->
-
-<!-- Update: 2024-11-18 -->
-
-<!-- Update: 2024-11-21 -->
-
-<!-- Update: 2024-11-26 -->
-
-<!-- Update: 2024-11-27 -->
-
-<!-- Update: 2024-11-27 -->
-
-<!-- Update: 2024-12-03 -->
-
-<!-- Update: 2024-12-12 -->
-
-<!-- Update: 2024-12-12 -->
-
-<!-- Update: 2024-12-12 -->
-
-<!-- Update: 2024-12-16 -->
-
-<!-- Update: 2024-12-17 -->
-
-<!-- Update: 2024-12-17 -->
-
-<!-- Update: 2024-12-18 -->
-
-<!-- Update: 2024-12-18 -->
-
-<!-- Update: 2024-12-20 -->
-
-<!-- Update: 2024-12-29 -->
-
-<!-- Update: 2024-12-30 -->
-
-<!-- Update: 2024-12-31 -->
-
-<!-- Update: 2025-01-08 -->
-
-<!-- Update: 2025-01-08 -->
-
-<!-- Update: 2025-01-09 -->
-
-<!-- Update: 2025-01-14 -->
-
-<!-- Update: 2025-01-21 -->
-
-<!-- Update: 2025-01-22 -->
-
-<!-- Update: 2025-01-24 -->
-
-<!-- Update: 2025-01-24 -->
-
-<!-- Update: 2025-01-25 -->
-
-<!-- Update: 2025-01-26 -->
-
-<!-- Update: 2025-01-27 -->
-
-<!-- Update: 2025-01-30 -->
-
-<!-- Update: 2025-02-01 -->
-
-<!-- Update: 2025-02-01 -->
-
-<!-- Update: 2025-02-05 -->
-
-<!-- Update: 2025-02-10 -->
-
-<!-- Update: 2025-02-11 -->
-
-<!-- Update: 2025-02-17 -->
-
-<!-- Update: 2025-02-24 -->
-
-<!-- Update: 2025-02-25 -->
-
-<!-- Update: 2025-03-04 -->
-
-<!-- Update: 2025-03-04 -->
-
-<!-- Update: 2025-03-05 -->
-
-<!-- Update: 2025-03-09 -->
-
-<!-- Update: 2025-03-19 -->
-
-<!-- Update: 2025-03-20 -->
-
-<!-- Update: 2025-03-26 -->
-
-<!-- Update: 2025-03-31 -->
-
-<!-- Update: 2025-04-04 -->
-
-<!-- Update: 2025-04-04 -->
-
-<!-- Update: 2025-04-07 -->
-
-<!-- Update: 2025-04-11 -->
-
-<!-- Update: 2025-04-15 -->
-
-<!-- Update: 2025-04-24 -->
-
-<!-- Update: 2025-04-29 -->
-
-<!-- Update: 2025-05-12 -->
-
-<!-- Update: 2025-05-16 -->
-
-<!-- Update: 2025-05-17 -->
-
-<!-- Update: 2025-05-19 -->
+## 📊 Assessment Modules
+
+### 1. Air Quality
+- Construction dust (PM10, PM2.5)
+- Vehicle emissions (NOx, SO2, CO)
+- Concrete batching plant emissions
+- Volatile Organic Compounds (VOCs)
+
+### 2. Noise & Vibration
+- Construction equipment noise
+- Traffic noise modeling
+- Vibration impact on structures
+- Cumulative noise assessment
+
+### 3. Water Resources
+- Surface water contamination risk
+- Groundwater impact assessment
+- Dewatering calculations
+- Stormwater management
+
+### 4. Ecology & Biodiversity
+- Habitat mapping and assessment
+- Protected species surveys
+- Ecological connectivity analysis
+- Compensation requirements
+
+### 5. Soil & Land
+- Contamination assessment
+- Erosion risk analysis
+- Land use change impact
+- Remediation requirements
+
+### 6. Socio-Economic
+- Community impact assessment
+- Cultural heritage sites
+- Visual impact assessment
+- Traffic and access
+
+### 7. Climate Resilience
+- Carbon footprint calculation
+- Climate change adaptation
+- Extreme weather resilience
+- Urban heat island mitigation
+
+## 🌍 Supported Project Types
+
+- 🏢 **Commercial Developments**: Offices, malls, hotels
+- 🏭 **Industrial Facilities**: Factories, warehouses, logistics
+- 🏘️ **Residential Projects**: Communities, towers, villas
+- 🛣️ **Infrastructure**: Roads, bridges, utilities
+- ⚡ **Energy Projects**: Solar farms, substations
+- 🏖️ **Tourism Developments**: Resorts, marinas, theme parks
+
+## 📈 Advanced Features
+
+### GIS Integration
+```python
+from src.analysis import SpatialAnalysis
+
+spatial = SpatialAnalysis()
+sensitive_areas = spatial.find_protected_areas(
+    project_location=(25.2048, 55.2708),  # lat, lon
+    buffer_distance=5000  # meters
+)
+```
+
+### Satellite Monitoring
+```python
+from src.monitoring import SatelliteMonitor
+
+monitor = SatelliteMonitor(project_id="NEOM_001")
+changes = monitor.detect_land_changes(
+    start_date="2023-01-01",
+    end_date="2024-01-01"
+)
+```
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+pytest tests/ -v
+
+# Run specific module tests
+pytest tests/test_air_quality.py
+
+# Run with coverage
+pytest tests/ --cov=src --cov-report=html
+```
+
+## 📚 Documentation
+
+- [Methodology Guide](docs/methodology/README.md)
+- [UAE Regulations Guide](docs/guides/uae_regulations.md)
+- [KSA Regulations Guide](docs/guides/ksa_regulations.md)
+- [API Reference](docs/api_reference.md)
+- [Best Practices](docs/best_practices.md)
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+### Development Roadmap
+- [ ] AI-powered mitigation recommendations
+- [ ] Drone integration for site surveys
+- [ ] Blockchain for environmental credits
+- [ ] AR/VR visualization
+- [ ] Mobile app for field assessments
+
+## 📜 Compliance Standards
+
+This tool complies with:
+- 🇦🇪 UAE Federal Law No. 24 (Environmental Protection)
+- 🇦🇪 Abu Dhabi EAD Requirements
+- 🇦🇪 Dubai Municipality Standards
+- 🇸🇦 KSA Environmental Regulations
+- 🇸🇦 NCEC Guidelines
+- 🌍 ISO 14001:2015
+- 🌍 IFC Performance Standards
+
+## 👨‍💻 Author
+
+**Edy Bassil**
+- Email: [bassileddy@gmail.com](mailto:bassileddy@gmail.com)
+- GitHub: [@edybass](https://github.com/edybass)
+- LinkedIn: [Edy Bassil](https://www.linkedin.com/in/edy-bassil/)
+- Expertise: Environmental Engineering & Software Development
+
+## 🙏 Acknowledgments
+
+- UAE Ministry of Climate Change and Environment
+- Saudi National Center for Environmental Compliance
+- Environmental Agency - Abu Dhabi
+- Dubai Municipality Environment Department
+
+## 📖 Citations
+
+If using this tool for professional assessments:
+```
+Bassil, E. (2024). Environmental Impact Assessment Tool for UAE & KSA. 
+GitHub: https://github.com/edybass/environmental-impact-assessment
+```
+
+---
+
+<p align="center">
+  <strong>🌱 Building Sustainable Futures in the Gulf</strong><br>
+  Made with ❤️ for environmental protection
+</p>
