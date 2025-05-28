@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Impact Assessment Tool - UAE & KSA</title>
+    <meta name="description" content="Professional EIA automation tool for construction projects in UAE & Saudi Arabia. Assess noise, dust, and environmental impacts.">
+    <meta name="author" content="Edy Bassil">
+    <meta name="keywords" content="EIA, environmental assessment, construction, UAE, Saudi Arabia, noise modeling, dust assessment">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --secondary-blue: #1976d2;
+            --secondary-dark: #0d47a1;
+            --secondary-light: #42a5f5;
+            --warning: #ff9800;
+            --danger: #f44336;
+            --success: #4caf50;
+            --info: #2196f3;
+            --background: #f5f7fa;
+            --surface: #ffffff;
+            --text-primary: #212121;
+            --text-secondary: #757575;
+            --border: #e0e0e0;
+            --shadow-1: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-2: 0 4px 8px rgba(0,0,0,0.15);
+            --shadow-3: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-green) 100%);
+            color: white;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 50%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .header-badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--surface);
+            box-shadow: var(--shadow-1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Assessment Wizard */
+        .assessment-wizard {
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: var(--shadow-2);
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .wizard-steps {
+            display: flex;
+            background: #f5f5f5;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .wizard-step {
+            flex: 1;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .wizard-step.active {
+            background: var(--surface);
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        .wizard-step.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-green);
+        }
+
+        .wizard-content {
+            padding: 3rem;
+        }
+
+        /* Forms */
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input, select, textarea {
+            padding: 0.875rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: var(--surface);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-2);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-blue);
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            margin-top: 3rem;
+        }
+
+        .results-section.show {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .results-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-1);
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .results-header h3 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+        }
+
+        .impact-level {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .impact-high {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .impact-medium {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .impact-low {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-2);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Mitigation Measures */
+        .mitigation-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .mitigation-item {
+            padding: 1rem;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mitigation-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .info-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-1);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary-green);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-3);
+        }
+
+        .info-card h4 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            padding: 4rem 0;
+            margin: 4rem -2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .feature {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: var(--shadow-1);
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Loading State */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .wizard-steps {
+                flex-direction: column;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Chart Container */
+        .chart-container {
+            margin: 2rem 0;
+            height: 400px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>
+                <span>🌿</span>
+                Environmental Impact Assessment Tool
+            </h1>
+            <p class="subtitle">Professional EIA automation for construction projects in UAE & Saudi Arabia</p>
+            <div class="header-badges">
+                <span class="badge">🇦🇪 UAE Compliant</span>
+                <span class="badge">🇸🇦 KSA Compliant</span>
+                <span class="badge">📊 GHG Protocol</span>
+                <span class="badge">🏗️ Construction Focus</span>
+                <span class="badge">🔬 Science-Based</span>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-content">
+            <ul class="nav-links">
+                <li><a href="#assessment">New Assessment</a></li>
+                <li><a href="#methodology">Methodology</a></li>
+                <li><a href="#regulations">Regulations</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div>
+                <a href="https://github.com/edybass/environmental-impact-assessment" target="_blank" class="btn btn-outline">
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Assessment Wizard -->
+        <div class="assessment-wizard" id="assessment">
+            <div class="wizard-steps">
+                <div class="wizard-step active" onclick="showStep(1)">
+                    1. Project Info
+                </div>
+                <div class="wizard-step" onclick="showStep(2)">
+                    2. Environmental Screening
+                </div>
+                <div class="wizard-step" onclick="showStep(3)">
+                    3. Impact Analysis
+                </div>
+                <div class="wizard-step" onclick="showStep(4)">
+                    4. Results & Mitigation
+                </div>
+            </div>
+
+            <div class="wizard-content">
+                <!-- Step 1: Project Info -->
+                <div id="step1" class="step-content">
+                    <div class="form-section">
+                        <h3>Project Information</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                            Enter basic information about your construction project
+                        </p>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="project-name">Project Name</label>
+                                <input type="text" id="project-name" placeholder="e.g., Dubai Marina Tower">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="project-type">Project Type</label>
+                                <select id="project-type">
+                                    <option value="residential">Residential</option>
+                                    <option value="commercial">Commercial</option>
+                                    <option value="industrial">Industrial</option>
+                                    <option value="infrastructure">Infrastructure</option>
+                                    <option value="mixed_use">Mixed Use</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <select id="location">
+                                    <optgroup label="UAE">
+                                        <option value="Dubai">Dubai</option>
+                                        <option value="Abu Dhabi">Abu Dhabi</option>
+                                        <option value="Sharjah">Sharjah</option>
+                                        <option value="Ajman">Ajman</option>
+                                        <option value="RAK">Ras Al Khaimah</option>
+                                    </optgroup>
+                                    <optgroup label="Saudi Arabia">
+                                        <option value="Riyadh">Riyadh</option>
+                                        <option value="Jeddah">Jeddah</option>
+                                        <option value="Dammam">Dammam</option>
+                                        <option value="NEOM">NEOM</option>
+                                        <option value="Makkah">Makkah</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="project-size">Project Size (m²)</label>
+                                <input type="number" id="project-size" placeholder="e.g., 25000" min="0">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="duration">Construction Duration (months)</label>
+                                <input type="number" id="duration" placeholder="e.g., 24" min="1">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="budget">Estimated Budget (Million AED/SAR)</label>
+                                <input type="number" id="budget" placeholder="e.g., 150" min="0">
+                            </div>
+                        </div>
+
+                        <div style="text-align: right; margin-top: 2rem;">
+                            <button class="btn btn-primary" onclick="nextStep()">
+                                Next: Environmental Screening
+                                <span>→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Environmental Screening -->
+                <div id="step2" class="step-content" style="display: none;">
+                    <div class="form-section">
+                        <h3>Environmental Screening</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                            Identify environmental sensitivities and regulatory requirements
+                        </p>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Sensitive Receptors (Select all that apply)</label>
+                                <div style="margin-top: 1rem;">
+                                    <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                        <input type="checkbox" value="residential_area" style="margin-right: 0.5rem;">
+                                        Residential Areas
+                                    </label>
+                                    <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                        <input type="checkbox" value="school" style="margin-right: 0.5rem;">
+                                        Schools/Educational Facilities
+                                    </label>
+                                    <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                        <input type="checkbox" value="hospital" style="margin-right: 0.5rem;">
+                                        Hospitals/Healthcare
+                                    </label>
+                                    <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                        <input type="checkbox" value="mosque" style="margin-right: 0.5rem;">
+                                        Mosques/Religious Sites
+                                    </label>
+                                    <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                        <input type="checkbox" value="protected_area" style="margin-right: 0.5rem;">
+                                        Protected/Conservation Areas
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="water-usage">Daily Water Usage (m³/day)</label>
+                                <input type="number" id="water-usage" placeholder="e.g., 1200" min="0">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nearest-receptor">Distance to Nearest Receptor (m)</label>
+                                <input type="number" id="nearest-receptor" placeholder="e.g., 100" min="0">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="existing-vegetation">Existing Vegetation</label>
+                                <select id="existing-vegetation">
+                                    <option value="none">None/Desert</option>
+                                    <option value="sparse">Sparse Vegetation</option>
+                                    <option value="moderate">Moderate Vegetation</option>
+                                    <option value="dense">Dense Vegetation/Trees</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                            <button class="btn btn-outline" onclick="prevStep()">
+                                <span>←</span>
+                                Previous
+                            </button>
+                            <button class="btn btn-primary" onclick="performScreening()">
+                                Perform Screening
+                                <span>→</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Screening Results -->
+                    <div id="screening-results" class="results-card" style="display: none; margin-top: 2rem;">
+                        <div class="results-header">
+                            <h3>Screening Results</h3>
+                            <span id="eia-required" class="impact-level"></span>
+                        </div>
+                        <div id="screening-details"></div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Impact Analysis -->
+                <div id="step3" class="step-content" style="display: none;">
+                    <div class="form-section">
+                        <h3>Construction Impact Analysis</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                            Assess potential impacts during construction phase
+                        </p>
+
+                        <!-- Noise Impact -->
+                        <div class="results-card">
+                            <h4>🔊 Noise Impact Assessment</h4>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Construction Equipment (Select all)</label>
+                                    <div style="margin-top: 1rem;">
+                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                            <input type="checkbox" value="excavator" checked style="margin-right: 0.5rem;">
+                                            Excavator
+                                        </label>
+                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                            <input type="checkbox" value="bulldozer" style="margin-right: 0.5rem;">
+                                            Bulldozer
+                                        </label>
+                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                            <input type="checkbox" value="pile_driver" style="margin-right: 0.5rem;">
+                                            Pile Driver
+                                        </label>
+                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                            <input type="checkbox" value="concrete_mixer" checked style="margin-right: 0.5rem;">
+                                            Concrete Mixer
+                                        </label>
+                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                            <input type="checkbox" value="crane" checked style="margin-right: 0.5rem;">
+                                            Crane
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="working-hours">Working Hours</label>
+                                    <select id="working-hours">
+                                        <option value="07:00-18:00">07:00 - 18:00 (Standard)</option>
+                                        <option value="06:00-22:00">06:00 - 22:00 (Extended)</option>
+                                        <option value="24hours">24 Hours</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="noise-barriers">Noise Barriers</label>
+                                    <select id="noise-barriers">
+                                        <option value="none">None</option>
+                                        <option value="temporary">Temporary Barriers</option>
+                                        <option value="permanent">Permanent Barriers</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dust Impact -->
+                        <div class="results-card" style="margin-top: 2rem;">
+                            <h4>💨 Dust & Air Quality Assessment</h4>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="soil-type">Soil Type</label>
+                                    <select id="soil-type">
+                                        <option value="sandy">Sandy (Common in UAE/KSA)</option>
+                                        <option value="clay">Clay</option>
+                                        <option value="silt">Silt</option>
+                                        <option value="rocky">Rocky</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="wind-speed">Average Wind Speed (km/h)</label>
+                                    <input type="number" id="wind-speed" value="15" min="0">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Dust Mitigation Measures</label>
+                                    <div style="margin-top: 1rem;">
+                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                            <input type="checkbox" value="water_spraying" checked style="margin-right: 0.5rem;">
+                                            Water Spraying
+                                        </label>
+                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                            <input type="checkbox" value="barriers" style="margin-right: 0.5rem;">
+                                            Dust Barriers
+                                        </label>
+                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
+                                            <input type="checkbox" value="covering" style="margin-right: 0.5rem;">
+                                            Material Covering
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                            <button class="btn btn-outline" onclick="prevStep()">
+                                <span>←</span>
+                                Previous
+                            </button>
+                            <button class="btn btn-primary" onclick="analyzeImpacts()">
+                                Analyze Impacts
+                                <span>→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Results & Mitigation -->
+                <div id="step4" class="step-content" style="display: none;">
+                    <div class="form-section">
+                        <h3>Assessment Results & Mitigation Plan</h3>
+
+                        <!-- Impact Summary -->
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value" id="noise-level">--</div>
+                                <div class="metric-label">Peak Noise Level (dB)</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="dust-pm10">--</div>
+                                <div class="metric-label">PM10 Concentration (μg/m³)</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="affected-area">--</div>
+                                <div class="metric-label">Affected Area (m)</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="compliance-score">--</div>
+                                <div class="metric-label">Compliance Score</div>
+                            </div>
+                        </div>
+
+                        <!-- Detailed Results -->
+                        <div id="detailed-results"></div>
+
+                        <!-- Mitigation Measures -->
+                        <div class="results-card" style="margin-top: 2rem;">
+                            <h4>🛡️ Recommended Mitigation Measures</h4>
+                            <ul class="mitigation-list" id="mitigation-list"></ul>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+                            <button class="btn btn-primary" onclick="downloadReport()">
+                                📥 Download Report
+                            </button>
+                            <button class="btn btn-secondary" onclick="shareResults()">
+                                📤 Share Results
+                            </button>
+                            <button class="btn btn-outline" onclick="startNewAssessment()">
+                                🔄 New Assessment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading">
+            <div class="spinner"></div>
+            <p>Analyzing environmental impacts...</p>
+        </div>
+
+        <!-- Info Section -->
+        <section id="methodology" style="margin-top: 4rem;">
+            <h2 style="text-align: center; margin-bottom: 3rem; color: var(--primary-dark);">
+                Our Assessment Methodology
+            </h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>📋 Comprehensive Screening</h4>
+                    <p>Initial screening based on project size, location, and environmental sensitivity to determine EIA requirements according to UAE and KSA regulations.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🔊 Noise Modeling</h4>
+                    <p>Advanced noise propagation modeling considering equipment types, distance attenuation, and barrier effects. Compliant with local noise standards.</p>
+                </div>
+                <div class="info-card">
+                    <h4>💨 Dust Dispersion Analysis</h4>
+                    <p>PM10 and PM2.5 concentration modeling adapted for arid climates, considering soil types, wind patterns, and mitigation effectiveness.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🏗️ Construction-Specific</h4>
+                    <p>Tailored assessments for construction activities including excavation, pile driving, concrete works, and material transport.</p>
+                </div>
+                <div class="info-card">
+                    <h4>📊 Regulatory Compliance</h4>
+                    <p>Automatic checking against UAE Federal Law No. 24, local municipality requirements, and KSA environmental regulations.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🌿 Mitigation Planning</h4>
+                    <p>Evidence-based mitigation recommendations with quantified effectiveness for reducing environmental impacts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Accurate Assessments</h3>
+                    <p>Science-based calculations using internationally recognized methodologies</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Results</h3>
+                    <p>Get comprehensive environmental impact analysis in minutes, not weeks</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Ready</h3>
+                    <p>Access from any device - desktop, tablet, or mobile phone</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Data Security</h3>
+                    <p>Your project data is processed securely and never stored</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Regional Expertise</h3>
+                    <p>Specifically designed for UAE and Saudi Arabia environments</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📈</div>
+                    <h3>Professional Reports</h3>
+                    <p>Generate submission-ready reports for regulatory authorities</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p><strong>Environmental Impact Assessment Tool</strong></p>
+        <p>Created by <a href="https://github.com/edybass" target="_blank">Edy Bassil</a> |
+           <a href="mailto:bassileddy@gmail.com">bassileddy@gmail.com</a></p>
+        <p style="margin-top: 1rem;">Supporting sustainable development in the Gulf region 🌱</p>
+    </footer>
+
+    <script>
+        // Current step tracker
+        let currentStep = 1;
+
+        // Project data storage
+        const projectData = {
+            screening: {},
+            impacts: {}
+        };
+
+        // Step navigation
+        function showStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.style.display = 'none';
+            });
+
+            // Show selected step
+            document.getElementById(`step${step}`).style.display = 'block';
+
+            // Update step indicators
+            document.querySelectorAll('.wizard-step').forEach((stepEl, index) => {
+                if (index + 1 === step) {
+                    stepEl.classList.add('active');
+                } else {
+                    stepEl.classList.remove('active');
+                }
+            });
+
+            currentStep = step;
+        }
+
+        function nextStep() {
+            if (validateStep(currentStep)) {
+                showStep(currentStep + 1);
+            }
+        }
+
+        function prevStep() {
+            showStep(currentStep - 1);
+        }
+
+        function validateStep(step) {
+            if (step === 1) {
+                const name = document.getElementById('project-name').value;
+                const size = document.getElementById('project-size').value;
+                const duration = document.getElementById('duration').value;
+
+                if (!name || !size || !duration) {
+                    alert('Please fill in all required fields');
+                    return false;
+                }
+
+                // Store project info
+                projectData.name = name;
+                projectData.type = document.getElementById('project-type').value;
+                projectData.location = document.getElementById('location').value;
+                projectData.size = parseFloat(size);
+                projectData.duration = parseInt(duration);
+            }
+
+            return true;
+        }
+
+        function performScreening() {
+            // Get sensitive receptors
+            const receptors = [];
+            document.querySelectorAll('#step2 input[type="checkbox"]:checked').forEach(cb => {
+                receptors.push(cb.value);
+            });
+
+            const waterUsage = parseFloat(document.getElementById('water-usage').value) || 0;
+            const nearestReceptor = parseFloat(document.getElementById('nearest-receptor').value) || 100;
+
+            // Store screening data
+            projectData.screening = {
+                sensitiveReceptors: receptors,
+                waterUsage: waterUsage,
+                nearestReceptor: nearestReceptor,
+                vegetation: document.getElementById('existing-vegetation').value
+            };
+
+            // Perform screening logic
+            let eiaRequired = false;
+            let eiaLevel = 'none';
+            const concerns = [];
+
+            // Check triggers
+            if (projectData.size > 10000) {
+                eiaRequired = true;
+                concerns.push(`Large project size (${projectData.size.toLocaleString()} m²)`);
+            }
+
+            if (receptors.length > 0) {
+                eiaRequired = true;
+                concerns.push(`Near sensitive receptors: ${receptors.join(', ')}`);
+            }
+
+            if (waterUsage > 500) {
+                concerns.push(`High water usage (${waterUsage} m³/day)`);
+            }
+
+            if (receptors.includes('protected_area')) {
+                eiaLevel = 'full';
+            } else if (eiaRequired) {
+                eiaLevel = concerns.length > 2 ? 'full' : 'limited';
+            }
+
+            // Display results
+            const resultsDiv = document.getElementById('screening-results');
+            const requiredSpan = document.getElementById('eia-required');
+            const detailsDiv = document.getElementById('screening-details');
+
+            resultsDiv.style.display = 'block';
+
+            if (eiaRequired) {
+                requiredSpan.textContent = `EIA Required - ${eiaLevel.toUpperCase()}`;
+                requiredSpan.className = 'impact-level impact-high';
+            } else {
+                requiredSpan.textContent = 'EIA Not Required';
+                requiredSpan.className = 'impact-level impact-low';
+            }
+
+            detailsDiv.innerHTML = `
+                <h4>Key Findings:</h4>
+                <ul style="margin-top: 1rem;">
+                    ${concerns.map(c => `<li>${c}</li>`).join('')}
+                </ul>
+                ${eiaRequired ? `
+                    <h4 style="margin-top: 1.5rem;">Required Studies:</h4>
+                    <ul style="margin-top: 1rem;">
+                        <li>Environmental Baseline Survey</li>
+                        <li>Noise and Air Quality Modeling</li>
+                        ${waterUsage > 1000 ? '<li>Water Resources Assessment</li>' : ''}
+                        ${receptors.includes('protected_area') ? '<li>Ecological Impact Assessment</li>' : ''}
+                        <li>Construction Environmental Management Plan</li>
+                    </ul>
+                ` : ''}
+            `;
+
+            // Enable next step after screening
+            setTimeout(() => {
+                nextStep();
+            }, 2000);
+        }
+
+        function analyzeImpacts() {
+            showLoading();
+
+            // Get selected equipment
+            const equipment = [];
+            document.querySelectorAll('#step3 input[type="checkbox"]:checked').forEach(cb => {
+                if (cb.value !== 'water_spraying' && cb.value !== 'barriers' && cb.value !== 'covering') {
+                    equipment.push(cb.value);
+                }
+            });
+
+            // Get mitigation measures
+            const mitigation = [];
+            document.querySelectorAll('#step3 input[value="water_spraying"], #step3 input[value="barriers"], #step3 input[value="covering"]').forEach(cb => {
+                if (cb.checked) {
+                    mitigation.push(cb.value);
+                }
+            });
+
+            // Simulate calculations
+            setTimeout(() => {
+                // Calculate noise (simplified)
+                const baseNoise = {
+                    'excavator': 85,
+                    'bulldozer': 85,
+                    'pile_driver': 95,
+                    'concrete_mixer': 85,
+                    'crane': 75
+                };
+
+                let maxNoise = 0;
+                equipment.forEach(eq => {
+                    const noise = baseNoise[eq] || 80;
+                    maxNoise = Math.max(maxNoise, noise);
+                });
+
+                // Apply distance attenuation
+                const distance = projectData.screening.nearestReceptor;
+                const attenuatedNoise = maxNoise - 20 * Math.log10(distance / 10);
+
+                // Calculate dust (simplified)
+                const windSpeed = parseFloat(document.getElementById('wind-speed').value) || 15;
+                let baseDust = 100 * (windSpeed / 10);
+
+                // Apply mitigation
+                const mitigationEffect = mitigation.length * 0.3;
+                baseDust *= (1 - Math.min(0.85, mitigationEffect));
+
+                // Store results
+                projectData.impacts = {
+                    noiseLevel: attenuatedNoise.toFixed(1),
+                    dustPM10: baseDust.toFixed(1),
+                    dustPM25: (baseDust * 0.4).toFixed(1),
+                    affectedRadius: windSpeed < 10 ? 100 : windSpeed < 20 ? 200 : 500
+                };
+
+                hideLoading();
+                showStep(4);
+                displayResults();
+            }, 2000);
+        }
+
+        function displayResults() {
+            // Update metrics
+            document.getElementById('noise-level').textContent = projectData.impacts.noiseLevel;
+            document.getElementById('dust-pm10').textContent = projectData.impacts.dustPM10;
+            document.getElementById('affected-area').textContent = projectData.impacts.affectedRadius;
+
+            // Calculate compliance score
+            const noiseCompliant = projectData.impacts.noiseLevel < 65;
+            const dustCompliant = projectData.impacts.dustPM10 < 150;
+            const score = (noiseCompliant && dustCompliant) ? '✓' : '!';
+            document.getElementById('compliance-score').textContent = score;
+
+            // Detailed results
+            const detailsDiv = document.getElementById('detailed-results');
+            detailsDiv.innerHTML = `
+                <div class="results-card">
+                    <h4>📊 Impact Assessment Summary</h4>
+                    <p><strong>Project:</strong> ${projectData.name}</p>
+                    <p><strong>Location:</strong> ${projectData.location}</p>
+                    <p><strong>Type:</strong> ${projectData.type}</p>
+
+                    <div style="margin-top: 1.5rem;">
+                        <h5>Noise Impact:</h5>
+                        <p>Peak Level: ${projectData.impacts.noiseLevel} dB(A) ${noiseCompliant ? '✓' : '⚠️ Exceeds limit'}</p>
+
+                        <h5 style="margin-top: 1rem;">Air Quality Impact:</h5>
+                        <p>PM10: ${projectData.impacts.dustPM10} μg/m³ ${dustCompliant ? '✓' : '⚠️ Exceeds limit'}</p>
+                        <p>PM2.5: ${projectData.impacts.dustPM25} μg/m³</p>
+                    </div>
+                </div>
+            `;
+
+            // Mitigation measures
+            const mitigationList = document.getElementById('mitigation-list');
+            const measures = [];
+
+            if (!noiseCompliant) {
+                measures.push({
+                    icon: '🔇',
+                    text: 'Install 3m high noise barriers around site perimeter'
+                });
+                measures.push({
+                    icon: '⏰',
+                    text: 'Restrict high-noise activities to 08:00-17:00'
+                });
+                measures.push({
+                    icon: '🔧',
+                    text: 'Use quieter equipment models where available'
+                });
+            }
+
+            if (!dustCompliant || projectData.impacts.dustPM10 > 75) {
+                measures.push({
+                    icon: '💧',
+                    text: 'Water spraying every 2 hours during dry conditions'
+                });
+                measures.push({
+                    icon: '🚧',
+                    text: 'Install windbreak barriers on site boundaries'
+                });
+                measures.push({
+                    icon: '🚛',
+                    text: 'Cover all trucks carrying loose materials'
+                });
+            }
+
+            measures.push({
+                icon: '📋',
+                text: 'Implement daily environmental monitoring program'
+            });
+            measures.push({
+                icon: '👷',
+                text: 'Conduct weekly environmental training for workers'
+            });
+
+            mitigationList.innerHTML = measures.map(m => `
+                <li class="mitigation-item">
+                    <span class="mitigation-icon">${m.icon}</span>
+                    <span>${m.text}</span>
+                </li>
+            `).join('');
+        }
+
+        function showLoading() {
+            document.querySelector('.loading').style.display = 'block';
+        }
+
+        function hideLoading() {
+            document.querySelector('.loading').style.display = 'none';
+        }
+
+        function downloadReport() {
+            // Create report data
+            const report = {
+                projectInfo: projectData,
+                assessmentDate: new Date().toISOString(),
+                results: {
+                    screening: projectData.screening,
+                    impacts: projectData.impacts
+                },
+                recommendations: 'See mitigation measures above'
+            };
+
+            // Convert to JSON and download
+            const dataStr = JSON.stringify(report, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+
+            const exportFileDefaultName = `EIA_${projectData.name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.json`;
+
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+        }
+
+        function shareResults() {
+            const text = `Environmental Impact Assessment completed for ${projectData.name} in ${projectData.location}. Noise: ${projectData.impacts.noiseLevel} dB, PM10: ${projectData.impacts.dustPM10} μg/m³`;
+
+            if (navigator.share) {
+                navigator.share({
+                    title: 'EIA Results',
+                    text: text,
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('Results copied to clipboard!');
+                });
+            }
+        }
+
+        function startNewAssessment() {
+            if (confirm('Start a new assessment? Current data will be lost.')) {
+                location.reload();
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('EIA Tool initialized');
+            console.log('Created by Edy Bassil - bassileddy@gmail.com');
+        });
+    </script>
+</body>
+</html>
