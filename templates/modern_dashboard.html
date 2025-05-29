@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EIA Pro Platform - Modern Environmental Assessment</title>
+    
+    <!-- Modern CSS Framework -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .glass-effect { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); }
+        .pulse-animation { animation: pulse 2s infinite; }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #667eea;
+        }
+        
+        .stats-counter {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Version Alert Banner -->
+    <div class="bg-red-500 text-white text-center py-3 px-4 pulse-animation">
+        <span class="font-semibold">🚀 Version 5.0 Beta Testing Open - Limited to 100 Organizations!</span>
+        <a href="#beta-signup" class="ml-4 underline hover:no-underline">Apply Now →</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-bg bg-clip-text text-transparent">
+                        🌿 EIA Pro Platform
+                    </span>
+                    <span class="ml-3 px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">v1.0</span>
+                    <span class="ml-2 px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full pulse-animation">v5.0 Beta</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="showPlatformStats()" class="text-gray-700 hover:text-blue-600">Stats</button>
+                    <button onclick="scrollToBeta()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
+                        Join Beta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-bold mb-6">
+                Revolutionary Environmental Assessment
+            </h1>
+            <p class="text-xl mb-8 opacity-90">
+                Replace Expensive Consultants with AI • Version 1.0 Available Now • Version 5.0 Coming Soon
+            </p>
+            
+            <!-- Live Statistics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+                <div class="glass-effect rounded-xl p-6">
+                    <div id="stat-reports" class="stats-counter text-white">527</div>
+                    <div class="text-sm opacity-90">Reports Generated</div>
+                </div>
+                <div class="glass-effect rounded-xl p-6">
+                    <div id="stat-savings" class="stats-counter text-white">$2.5M</div>
+                    <div class="text-sm opacity-90">Client Savings</div>
+                </div>
+                <div class="glass-effect rounded-xl p-6">
+                    <div id="stat-time" class="stats-counter text-white">75%</div>
+                    <div class="text-sm opacity-90">Time Reduction</div>
+                </div>
+                <div class="glass-effect rounded-xl p-6">
+                    <div id="stat-countries" class="stats-counter text-white">12</div>
+                    <div class="text-sm opacity-90">Countries</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Assessment Interface -->
+    <section class="py-16 -mt-10 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-2xl p-8">
+                <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">
+                    Start New EIA Assessment
+                </h2>
+                
+                <!-- Project Input Form -->
+                <form id="assessmentForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Project Name</label>
+                            <input type="text" id="projectName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter project name">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                            <select id="location" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option value="UAE">United Arab Emirates</option>
+                                <option value="KSA">Saudi Arabia</option>
+                                <option value="Qatar">Qatar</option>
+                                <option value="Kuwait">Kuwait</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Project Type</label>
+                            <select id="projectType" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option value="construction">Construction</option>
+                                <option value="infrastructure">Infrastructure</option>
+                                <option value="industrial">Industrial</option>
+                                <option value="energy">Energy</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Area (hectares)</label>
+                            <input type="number" id="area" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Project area">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Latitude</label>
+                            <input type="number" id="latitude" step="0.000001" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="25.276987">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Longitude</label>
+                            <input type="number" id="longitude" step="0.000001" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="55.296249">
+                        </div>
+                    </div>
+
+                    <!-- Advanced Modules Selection -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">Select Assessment Modules</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                            <label class="feature-card bg-white p-4 rounded-lg cursor-pointer text-center">
+                                <input type="checkbox" name="modules" value="air_modeling" class="sr-only">
+                                <i class="fas fa-wind text-3xl text-blue-500 mb-2"></i>
+                                <div class="font-medium">Air Modeling</div>
+                                <div class="text-xs text-gray-500">Gaussian Dispersion</div>
+                            </label>
+                            
+                            <label class="feature-card bg-white p-4 rounded-lg cursor-pointer text-center">
+                                <input type="checkbox" name="modules" value="noise_modeling" class="sr-only">
+                                <i class="fas fa-volume-up text-3xl text-green-500 mb-2"></i>
+                                <div class="font-medium">Noise Modeling</div>
+                                <div class="text-xs text-gray-500">ISO 9613-2</div>
+                            </label>
+                            
+                            <label class="feature-card bg-white p-4 rounded-lg cursor-pointer text-center">
+                                <input type="checkbox" name="modules" value="gis_analysis" class="sr-only">
+                                <i class="fas fa-map-marked-alt text-3xl text-purple-500 mb-2"></i>
+                                <div class="font-medium">GIS Analysis</div>
+                                <div class="text-xs text-gray-500">Automated Mapping</div>
+                            </label>
+                            
+                            <label class="feature-card bg-white p-4 rounded-lg cursor-pointer text-center">
+                                <input type="checkbox" name="modules" value="stakeholder_engagement" class="sr-only">
+                                <i class="fas fa-users text-3xl text-orange-500 mb-2"></i>
+                                <div class="font-medium">Stakeholder</div>
+                                <div class="text-xs text-gray-500">AI Management</div>
+                            </label>
+                            
+                            <label class="feature-card bg-white p-4 rounded-lg cursor-pointer text-center">
+                                <input type="checkbox" name="modules" value="baseline_studies" class="sr-only">
+                                <i class="fas fa-clipboard-check text-3xl text-red-500 mb-2"></i>
+                                <div class="font-medium">Baseline</div>
+                                <div class="text-xs text-gray-500">Data Collection</div>
+                            </label>
+                            
+                            <label class="feature-card bg-white p-4 rounded-lg cursor-pointer text-center">
+                                <input type="checkbox" name="modules" value="water_analysis" class="sr-only">
+                                <i class="fas fa-tint text-3xl text-cyan-500 mb-2"></i>
+                                <div class="font-medium">Water</div>
+                                <div class="text-xs text-gray-500">Impact Analysis</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex justify-center space-x-4 mt-8">
+                        <button type="button" onclick="runAssessment()" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition flex items-center space-x-2">
+                            <i class="fas fa-play"></i>
+                            <span>Run Assessment</span>
+                        </button>
+                        
+                        <button type="button" onclick="generateReport()" class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition flex items-center space-x-2">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>Generate Report</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="resultsSection" class="py-16 bg-gray-100" style="display: none;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Assessment Results</h2>
+                <div id="resultsContent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Version Comparison -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Platform Evolution</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Version 1.0 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 border-2 border-green-200">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-green-600">Version 1.0 - Available Now</h3>
+                        <p class="text-gray-600">Working today, saving companies millions</p>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Basic impact calculations</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Risk assessment matrices</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>PDF report generation</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>UAE/KSA compliance</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Cost: $999/month</li>
+                    </ul>
+                </div>
+                
+                <!-- Version 5.0 -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 border-2 border-red-200 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-red-500 text-white px-4 py-1 text-sm">Coming Soon</div>
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-red-600">Version 5.0 - Revolutionary</h3>
+                        <p class="text-gray-600">Complete consultant replacement in 24 hours</p>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><i class="fas fa-rocket text-red-500 mr-3"></i>AI-powered prediction (97% accuracy)</li>
+                        <li class="flex items-center"><i class="fas fa-rocket text-red-500 mr-3"></i>Global compliance (100+ countries)</li>
+                        <li class="flex items-center"><i class="fas fa-rocket text-red-500 mr-3"></i>Automated stakeholder management</li>
+                        <li class="flex items-center"><i class="fas fa-rocket text-red-500 mr-3"></i>Satellite monitoring integration</li>
+                        <li class="flex items-center"><i class="fas fa-rocket text-red-500 mr-3"></i>24-hour complete automation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beta Signup -->
+    <section id="beta-signup" class="gradient-bg text-white py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-6">Join Version 5.0 Beta</h2>
+            <p class="text-xl mb-8 opacity-90">Be among the first 100 organizations to experience complete automation</p>
+            
+            <div class="bg-white bg-opacity-10 rounded-2xl p-8 backdrop-filter backdrop-blur-lg">
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input type="text" placeholder="Company Name" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 placeholder-white text-white border border-white border-opacity-30">
+                        <input type="email" placeholder="Work Email" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 placeholder-white text-white border border-white border-opacity-30">
+                    </div>
+                    <textarea placeholder="Why do you need Version 5.0?" rows="3" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 placeholder-white text-white border border-white border-opacity-30"></textarea>
+                    <button type="submit" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                        Submit Beta Application
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-2xl font-bold mb-4">Created by Edy Bassil</h3>
+            <p class="text-lg mb-4">Environmental Technology Expert</p>
+            <a href="mailto:bassileddy@gmail.com" class="text-blue-400 hover:text-blue-300">bassileddy@gmail.com</a>
+            <p class="mt-6 text-gray-400">EIA Pro Platform - Where Environmental Excellence Meets Artificial Intelligence</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Load platform stats
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/platform-stats');
+                const stats = await response.json();
+                
+                document.getElementById('stat-reports').textContent = stats.reports_generated;
+                document.getElementById('stat-savings').textContent = `$${(stats.money_saved / 1000000).toFixed(1)}M`;
+                document.getElementById('stat-time').textContent = `${stats.time_saved_percent}%`;
+                document.getElementById('stat-countries').textContent = stats.countries_active;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        // Run assessment using all advanced modules
+        async function runAssessment() {
+            const form = document.getElementById('assessmentForm');
+            const formData = new FormData(form);
+            
+            // Get selected modules
+            const modules = Array.from(document.querySelectorAll('input[name="modules"]:checked'))
+                .map(cb => cb.value);
+            
+            const data = {
+                name: document.getElementById('projectName').value,
+                location: document.getElementById('location').value,
+                type: document.getElementById('projectType').value,
+                area: document.getElementById('area').value,
+                latitude: document.getElementById('latitude').value,
+                longitude: document.getElementById('longitude').value,
+                modules: modules,
+                duration: 12
+            };
+            
+            // Show loading
+            const resultsSection = document.getElementById('resultsSection');
+            const resultsContent = document.getElementById('resultsContent');
+            
+            resultsContent.innerHTML = `
+                <div class="text-center py-8">
+                    <i class="fas fa-spinner fa-spin text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold">Running Advanced Assessment...</h3>
+                    <p class="text-gray-600">Using AI models and advanced algorithms</p>
+                </div>
+            `;
+            resultsSection.style.display = 'block';
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+            
+            try {
+                const response = await fetch('/api/assess-project', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                const results = await response.json();
+                
+                if (results.status === 'success') {
+                    displayResults(results);
+                } else {
+                    throw new Error(results.message);
+                }
+            } catch (error) {
+                resultsContent.innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-red-600">Assessment Error</h3>
+                        <p class="text-gray-600">${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Display assessment results
+        function displayResults(results) {
+            const resultsContent = document.getElementById('resultsContent');
+            
+            let advancedHTML = '';
+            if (results.advanced_results) {
+                Object.entries(results.advanced_results).forEach(([module, data]) => {
+                    advancedHTML += `
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-blue-800">${data.module}</h4>
+                            <p class="text-sm text-blue-600">Status: ${data.status}</p>
+                            ${data.sources_identified ? `<p class="text-sm">Sources: ${data.sources_identified}</p>` : ''}
+                            ${data.receptors_found ? `<p class="text-sm">Receptors: ${data.receptors_found}</p>` : ''}
+                            ${data.stakeholders_identified ? `<p class="text-sm">Stakeholders: ${data.stakeholders_identified}</p>` : ''}
+                            ${data.sampling_locations ? `<p class="text-sm">Sampling Locations: ${data.sampling_locations}</p>` : ''}
+                            ${data.cost_estimate ? `<p class="text-sm">Cost Estimate: $${data.cost_estimate.toLocaleString()}</p>` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            resultsContent.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-green-600">✅ Basic Impact Assessment</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                                <span>Air Quality Score</span>
+                                <span class="font-semibold">${results.basic_impacts.air_quality_score}/10</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                                <span>Noise Score</span>
+                                <span class="font-semibold">${results.basic_impacts.noise_score}/10</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                                <span>Water Score</span>
+                                <span class="font-semibold">${results.basic_impacts.water_score}/10</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                <span>Overall Risk</span>
+                                <span class="font-semibold text-orange-600">${results.basic_impacts.overall_risk}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-blue-600">🚀 Advanced Module Results</h3>
+                        <div class="space-y-3">
+                            ${advancedHTML || '<p class="text-gray-500">No advanced modules selected</p>'}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-4">
+                        <strong>Assessment Complete!</strong> Processing time: ${results.processing_time}
+                    </div>
+                    <button onclick="generateReport()" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
+                        Generate Professional Report
+                    </button>
+                </div>
+            `;
+        }
+
+        // Generate report
+        async function generateReport() {
+            try {
+                const response = await fetch('/api/generate-report', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ project_id: 'current' })
+                });
+                
+                const report = await response.json();
+                
+                alert(`Report Generated!\n\nReport ID: ${report.report_id}\nPages: ${report.pages}\nSections: ${report.sections.length}\nGeneration Time: ${report.generation_time}\n\nReport ready for download!`);
+            } catch (error) {
+                alert('Error generating report: ' + error.message);
+            }
+        }
+
+        // Utility functions
+        function showPlatformStats() {
+            alert('Platform Statistics:\n• 527 EIA reports generated\n• $2.5M client savings\n• 75% time reduction\n• 12 countries active\n• Advanced modules: Available');
+        }
+
+        function scrollToBeta() {
+            document.getElementById('beta-signup').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Module selection styling
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('input[name="modules"]');
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', function() {
+                    const card = this.closest('.feature-card');
+                    if (this.checked) {
+                        card.classList.add('bg-blue-50', 'border-blue-500');
+                    } else {
+                        card.classList.remove('bg-blue-50', 'border-blue-500');
+                    }
+                });
+            });
+            
+            // Load stats on page load
+            loadStats();
+        });
+    </script>
+</body>
+</html>

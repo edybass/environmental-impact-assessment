@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - EIA Pro Platform{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Hero Section -->
+    <div class="row bg-light py-5">
+        <div class="col-12 text-center">
+            <h1 class="display-4 fw-bold">Welcome to EIA Pro Platform</h1>
+            <p class="lead">Currently running <span class="badge bg-success">Version {{ current_version }}</span> 
+                with <span class="badge bg-danger">Version {{ next_version }}</span> coming very soon!</p>
+            <div class="mt-4">
+                <a href="{{ url_for('new_project') }}" class="btn btn-gradient btn-lg me-3">
+                    <i class="fas fa-plus"></i> Start New EIA Project
+                </a>
+                <a href="{{ url_for('beta_access') }}" class="btn btn-warning btn-lg">
+                    <i class="fas fa-rocket"></i> Apply for V5.0 Beta Access
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-number">{{ "{:,}".format(stats.reports_generated) }}</div>
+                    <div>Reports Generated</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-number">${{ "{:,.0f}".format(stats.money_saved) }}</div>
+                    <div>Client Savings</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-number">{{ stats.time_saved_percent }}%</div>
+                    <div>Time Reduction</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-number">{{ stats.active_countries }}</div>
+                    <div>Countries Active</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Version Comparison -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Platform Evolution</h2>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0">Version 1.0 - Available Now</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            {% for feature in features_v1 %}
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="feature-icon">{{ feature.icon }}</div>
+                                    <h6>{{ feature.title }}</h6>
+                                    <small class="text-muted">{{ feature.description }}</small>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="mt-4 text-center">
+                            <a href="{{ url_for('new_project') }}" class="btn btn-success">
+                                Use Version 1.0 Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card h-100 border-danger">
+                    <div class="card-header bg-danger text-white">
+                        <h4 class="mb-0">Version 5.0 - Coming Very Soon!</h4>
+                        <small>Beta Testing Now Open</small>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            {% for feature in features_v5[:4] %}
+                            <div class="col-6">
+                                <div class="text-center">
+                                    <div class="feature-icon">{{ feature.icon }}</div>
+                                    <h6>{{ feature.title }}</h6>
+                                    <small class="text-muted">{{ feature.description }}</small>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="mt-4 text-center">
+                            <a href="{{ url_for('beta_access') }}" class="btn btn-danger">
+                                Join Beta Program
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">How It Works</h2>
+        <div class="row g-4">
+            <div class="col-md-3 text-center">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-project-diagram fa-3x text-primary mb-3"></i>
+                        <h5>1. Create Project</h5>
+                        <p>Enter basic project details and location information</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                        <h5>2. Assess Impacts</h5>
+                        <p>AI analyzes environmental impacts automatically</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                        <h5>3. Engage Stakeholders</h5>
+                        <p>Automated consultation and comment management</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-file-pdf fa-3x text-primary mb-3"></i>
+                        <h5>4. Generate Report</h5>
+                        <p>Professional EIA report ready for submission</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Beta Banner -->
+    <div class="container my-5">
+        <div class="alert alert-beta">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Version 5.0 Beta Testing Now Open!</h4>
+                    <p class="mb-0">Be among the first 100 organizations to experience full AI automation. 
+                    Limited spots remaining - {{ 100 - (stats.beta_applications % 100) }} spots left!</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="{{ url_for('beta_access') }}" class="btn btn-warning btn-lg">
+                        Apply for Beta Access
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Projects (if logged in) -->
+    {% if stats.active_projects > 0 %}
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Your Active Projects</h2>
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> You have {{ stats.active_projects }} active project(s). 
+            <a href="{{ url_for('new_project') }}">View Projects</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Marketing Modal -->
+<div class="modal fade" id="marketingModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">🚀 Revolutionary Announcement</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <h3>Version 5.0 Will Replace Environmental Consultants!</h3>
+                <p class="lead">What costs $50,000-$500,000 with consultants will cost just $1,999/month with our AI.</p>
+                <div class="row my-4">
+                    <div class="col-md-6">
+                        <h5>Traditional Way</h5>
+                        <ul class="list-unstyled">
+                            <li>❌ 6-12 months</li>
+                            <li>❌ $500,000 cost</li>
+                            <li>❌ 10+ consultants</li>
+                            <li>❌ Inconsistent quality</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>EIA Pro V5.0</h5>
+                        <ul class="list-unstyled">
+                            <li>✅ 24 hours</li>
+                            <li>✅ $1,999/month</li>
+                            <li>✅ Fully automated</li>
+                            <li>✅ Guaranteed quality</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="{{ url_for('beta_access') }}" class="btn btn-danger btn-lg">
+                    Secure Your Beta Access Now
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Show marketing modal after 5 seconds
+setTimeout(function() {
+    $('#marketingModal').modal('show');
+}, 5000);
+</script>
+{% endblock %}

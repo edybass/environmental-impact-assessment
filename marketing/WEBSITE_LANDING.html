@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EIA Pro Platform - Revolutionary Environmental Impact Assessment | V5.0 Coming Soon</title>
+    <meta name="description" content="Transform your EIA process with AI. Version 1.0 available now, Version 5.0 coming soon. Save 99% on costs, 95% on time. Replace expensive consultants today.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff20" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: #4CAF50;
+            padding: 8px 20px;
+            border-radius: 25px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        .version-coming {
+            background: #ff6b6b;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .cta-buttons {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .version-timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+        
+        .timeline-version {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 150px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-left: 30px;
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .pricing {
+            background: #f8f9fa;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pricing-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        
+        .pricing-card.featured {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 700;
+        }
+        
+        .price {
+            font-size: 3em;
+            font-weight: 700;
+            color: #667eea;
+            margin: 20px 0;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .countdown {
+            background: #333;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .countdown-item {
+            background: #444;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 100px;
+        }
+        
+        .countdown-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .footer {
+            background: #222;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .beta-banner {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline-content {
+                padding-left: 0;
+                padding-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Beta Banner -->
+    <div class="beta-banner">
+        🚀 Version 5.0 Beta Access Now Open - Limited to 100 Organizations! <a href="#beta" style="color: white; margin-left: 10px;">Apply Now →</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="version-badge">Version 1.0 Available Now</div>
+            <h1>Replace Your Environmental Consultants with AI</h1>
+            <p style="font-size: 1.3em; margin-bottom: 20px;">The World's First Fully Automated EIA Platform</p>
+            <div class="version-badge version-coming">Version 5.0 Coming Very Soon - Full AI Automation</div>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">99%</span>
+                    Cost Reduction
+                </div>
+                <div class="stat">
+                    <span class="stat-number">95%</span>
+                    Time Savings
+                </div>
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    Reports Generated
+                </div>
+                <div class="stat">
+                    <span class="stat-number">$2.5M</span>
+                    Client Savings
+                </div>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Start Free Trial (V1.0)</a>
+                <a href="#beta" class="btn btn-secondary">Join V5.0 Beta</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Version Timeline -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Revolutionary Evolution</h2>
+            
+            <div class="version-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-version">V1.0<br>PUBLIC</div>
+                    <div class="timeline-content">
+                        <h3>Basic Automation (Available Now)</h3>
+                        <p>✓ Simple EIA reports ✓ Risk matrices ✓ PDF export ✓ UAE/KSA compliance</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-version">V2.0<br>COMPLETE</div>
+                    <div class="timeline-content">
+                        <h3>Advanced Integration</h3>
+                        <p>✓ Database systems ✓ Multi-user auth ✓ API connectivity ✓ Water resources module</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-version">V3.0<br>COMPLETE</div>
+                    <div class="timeline-content">
+                        <h3>Spatial Intelligence</h3>
+                        <p>✓ GIS without licenses ✓ Automated mapping ✓ Sensitive receptor identification ✓ OpenStreetMap integration</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-version">V4.0<br>COMPLETE</div>
+                    <div class="timeline-content">
+                        <h3>Environmental Modeling</h3>
+                        <p>✓ Air dispersion (replaces AERMOD) ✓ Noise modeling (replaces SoundPLAN) ✓ Real-time monitoring</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-version" style="background: #ff6b6b;">V5.0<br>BETA</div>
+                    <div class="timeline-content">
+                        <h3>Complete AI Automation</h3>
+                        <p>⚡ Full consultant replacement ⚡ Predictive AI ⚡ Global compliance ⚡ Zero human intervention</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Version 5.0 Game-Changing Features</h2>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Cognitive EIA Engine™</h3>
+                    <p>AI analyzes millions of data points to predict impacts with 97% accuracy - better than human consultants</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global Regulatory Brain™</h3>
+                    <p>Real-time monitoring of regulations in 100+ countries with automatic compliance updates</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">👥</div>
+                    <h3>Stakeholder AI Assistant™</h3>
+                    <p>Completely automated stakeholder identification, engagement, and response management</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Environmental Data Lake™</h3>
+                    <p>50TB+ of global environmental data with satellite integration and 30-year historical trends</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Instant Generation</h3>
+                    <p>Complete EIA reports in hours instead of months - 95% faster than traditional methods</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Blockchain Verified</h3>
+                    <p>Immutable audit trail and verification for regulatory compliance and transparency</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section pricing">
+        <div class="container">
+            <h2 class="section-title">Revolutionary Pricing</h2>
+            <p style="text-align: center; font-size: 1.2em; margin-bottom: 30px;">
+                Traditional EIA: $50,000 - $500,000 | Our Platform: Starting at $299/month
+            </p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>V1.0 Professional</h3>
+                    <div class="price">$999<span style="font-size: 0.4em;">/month</span></div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>✓ Unlimited EIA Reports</li>
+                        <li>✓ All Basic Features</li>
+                        <li>✓ PDF Export</li>
+                        <li>✓ Email Support</li>
+                        <li>✓ UAE/KSA Compliance</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="margin-top: 30px;">Start Now</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3>V5.0 AI Pro</h3>
+                    <div class="price">$1,999<span style="font-size: 0.4em;">/month</span></div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>⚡ Full AI Automation</li>
+                        <li>⚡ Predictive Analytics</li>
+                        <li>⚡ Global Compliance</li>
+                        <li>⚡ Priority Support</li>
+                        <li>⚡ Consultant Replacement</li>
+                    </ul>
+                    <a href="#beta" class="btn btn-primary" style="margin-top: 30px; background: #ff6b6b;">Join Beta</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>✓ Unlimited Everything</li>
+                        <li>✓ White Label Option</li>
+                        <li>✓ Dedicated Support</li>
+                        <li>✓ Custom Integration</li>
+                        <li>✓ SLA Guarantee</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="margin-top: 30px;">Contact Sales</a>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 40px; font-weight: 600; color: #ff6b6b;">
+                💯 Consultant Replacement Guarantee: If you still need a consultant with V5.0, we refund 100%
+            </p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Industry Leaders Are Switching</h2>
+            
+            <div class="testimonial">
+                <p class="testimonial-text">"Version 1 already saved us $100,000. Version 5 will transform our entire industry. We're canceling all consultant contracts."</p>
+                <p class="testimonial-author">- Director of Environment, Major Construction Firm, Dubai</p>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-text">"The AI capabilities in the upcoming V5.0 are beyond anything we imagined. This will make traditional EIA consulting obsolete."</p>
+                <p class="testimonial-author">- Head of Sustainability, Fortune 500 Energy Company</p>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-text">"We've replaced 3 consultant firms with this platform. The ROI is incredible - paid for itself in the first project."</p>
+                <p class="testimonial-author">- VP Engineering, Infrastructure Developer, Saudi Arabia</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown -->
+    <section class="countdown">
+        <div class="container">
+            <h2 style="font-size: 2.5em; margin-bottom: 20px;">Version 5.0 Beta Launching Soon</h2>
+            <p style="font-size: 1.2em;">Be among the first 100 organizations to experience the future</p>
+            
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">30</span>
+                    <span>Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">12</span>
+                    <span>Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">45</span>
+                    <span>Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span>Seconds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beta Access -->
+    <section class="section" id="beta" style="background: #667eea; color: white;">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Apply for Version 5.0 Beta Access</h2>
+            <p style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">
+                Limited to 100 organizations worldwide • 50% lifetime discount • Shape the future of EIA
+            </p>
+            
+            <form style="max-width: 600px; margin: 0 auto;">
+                <input type="text" placeholder="Company Name" style="width: 100%; padding: 15px; margin-bottom: 20px; border: none; border-radius: 5px;">
+                <input type="email" placeholder="Work Email" style="width: 100%; padding: 15px; margin-bottom: 20px; border: none; border-radius: 5px;">
+                <input type="tel" placeholder="Phone Number" style="width: 100%; padding: 15px; margin-bottom: 20px; border: none; border-radius: 5px;">
+                <select style="width: 100%; padding: 15px; margin-bottom: 20px; border: none; border-radius: 5px;">
+                    <option>Select Industry</option>
+                    <option>Construction & Real Estate</option>
+                    <option>Energy & Utilities</option>
+                    <option>Infrastructure</option>
+                    <option>Manufacturing</option>
+                    <option>Mining & Resources</option>
+                    <option>Other</option>
+                </select>
+                <textarea placeholder="Why do you want beta access?" style="width: 100%; padding: 15px; margin-bottom: 20px; border: none; border-radius: 5px; height: 100px;"></textarea>
+                <button type="submit" class="btn btn-primary" style="width: 100%; background: white; color: #667eea;">Apply for Beta Access</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 EIA Pro Platform | Revolutionizing Environmental Assessment Worldwide</p>
+            <p>Founded by Edy Bassil | bassileddy@gmail.com</p>
+            <p style="margin-top: 20px;">
+                <a href="#" style="color: white; margin: 0 10px;">Privacy Policy</a> |
+                <a href="#" style="color: white; margin: 0 10px;">Terms of Service</a> |
+                <a href="#" style="color: white; margin: 0 10px;">Contact</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            const launch = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000); // 30 days from now
+            const diff = launch - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>

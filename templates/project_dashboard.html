@@ -1,0 +1,324 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.name }} - EIA Pro Platform{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar">
+            <h6 class="text-muted">PROJECT MENU</h6>
+            <nav class="nav flex-column">
+                <a class="nav-link active" href="#overview">
+                    <i class="fas fa-tachometer-alt"></i> Overview
+                </a>
+                <a class="nav-link" href="{{ url_for('baseline_studies', project_id=project.id) }}">
+                    <i class="fas fa-clipboard-check"></i> Baseline Studies
+                </a>
+                <a class="nav-link" href="{{ url_for('gis_mapping', project_id=project.id) }}">
+                    <i class="fas fa-map-marked-alt"></i> GIS Mapping
+                </a>
+                <a class="nav-link" href="{{ url_for('air_modeling', project_id=project.id) }}">
+                    <i class="fas fa-wind"></i> Air Modeling
+                </a>
+                <a class="nav-link" href="{{ url_for('noise_modeling', project_id=project.id) }}">
+                    <i class="fas fa-volume-up"></i> Noise Modeling
+                </a>
+                <a class="nav-link" href="{{ url_for('stakeholder_engagement', project_id=project.id) }}">
+                    <i class="fas fa-users"></i> Stakeholders
+                </a>
+                <a class="nav-link" href="{{ url_for('generate_report', project_id=project.id) }}">
+                    <i class="fas fa-file-pdf"></i> Generate Report
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-10">
+            <div class="container-fluid py-4">
+                <!-- Project Header -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h2>{{ project.name }}</h2>
+                        <p class="text-muted">
+                            <i class="fas fa-map-marker-alt"></i> {{ project.location }} | 
+                            <i class="fas fa-industry"></i> {{ project.type }} | 
+                            <i class="fas fa-chart-area"></i> {{ project.area }} hectares
+                        </p>
+                        
+                        <!-- Progress Bar -->
+                        <div class="progress" style="height: 25px;">
+                            <div class="progress-bar bg-success" role="progressbar" 
+                                 style="width: {{ project.completion }}%">
+                                {{ project.completion }}% Complete
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version Alert -->
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>🚀 Version 5.0 Coming Soon!</strong> 
+                    This project uses Version 1.0. When V5.0 launches, you'll get AI-powered analysis, 
+                    predictive modeling, and complete automation - reducing assessment time from weeks to hours!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h4>Quick Actions</h4>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-outline-primary" onclick="runQuickAssessment()">
+                                <i class="fas fa-bolt"></i> Quick Assessment
+                            </button>
+                            <button class="btn btn-outline-success" onclick="calculateImpacts()">
+                                <i class="fas fa-calculator"></i> Calculate Impacts
+                            </button>
+                            <button class="btn btn-outline-info" onclick="viewRegulations()">
+                                <i class="fas fa-gavel"></i> View Regulations
+                            </button>
+                            <button class="btn btn-outline-warning" onclick="inviteStakeholder()">
+                                <i class="fas fa-user-plus"></i> Invite Stakeholder
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assessment Modules -->
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Assessment Modules</h4>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Baseline Data Collection -->
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-clipboard-check fa-3x text-primary mb-3"></i>
+                                <h5>Baseline Data Collection</h5>
+                                <p>1-2 year environmental baseline studies</p>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar" style="width: 25%">25%</div>
+                                </div>
+                                <a href="{{ url_for('baseline_studies', project_id=project.id) }}" 
+                                   class="btn btn-sm btn-primary">Configure Studies</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GIS & Spatial Analysis -->
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-map-marked-alt fa-3x text-success mb-3"></i>
+                                <h5>GIS & Spatial Analysis</h5>
+                                <p>Automated receptor mapping</p>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar bg-success" style="width: 10%">10%</div>
+                                </div>
+                                <a href="{{ url_for('gis_mapping', project_id=project.id) }}" 
+                                   class="btn btn-sm btn-success">View Map</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Air Quality Modeling -->
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-wind fa-3x text-info mb-3"></i>
+                                <h5>Air Quality Modeling</h5>
+                                <p>Gaussian dispersion modeling</p>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar bg-info" style="width: 0%">0%</div>
+                                </div>
+                                <a href="{{ url_for('air_modeling', project_id=project.id) }}" 
+                                   class="btn btn-sm btn-info">Run Model</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Noise Impact Assessment -->
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-volume-up fa-3x text-warning mb-3"></i>
+                                <h5>Noise Impact Assessment</h5>
+                                <p>ISO 9613-2 propagation model</p>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar bg-warning" style="width: 0%">0%</div>
+                                </div>
+                                <a href="{{ url_for('noise_modeling', project_id=project.id) }}" 
+                                   class="btn btn-sm btn-warning">Model Noise</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stakeholder Engagement -->
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-users fa-3x text-danger mb-3"></i>
+                                <h5>Stakeholder Engagement</h5>
+                                <p>Automated consultation management</p>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar bg-danger" style="width: 0%">0%</div>
+                                </div>
+                                <a href="{{ url_for('stakeholder_engagement', project_id=project.id) }}" 
+                                   class="btn btn-sm btn-danger">Manage</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report Generation -->
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-file-pdf fa-3x text-secondary mb-3"></i>
+                                <h5>EIA Report Generation</h5>
+                                <p>Professional report creation</p>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar bg-secondary" style="width: 0%">0%</div>
+                                </div>
+                                <a href="{{ url_for('generate_report', project_id=project.id) }}" 
+                                   class="btn btn-sm btn-secondary">Generate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- V5.0 Preview -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="card border-danger">
+                            <div class="card-header bg-danger text-white">
+                                <h5 class="mb-0">🚀 Coming in Version 5.0</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6>AI-Powered Features:</h6>
+                                        <ul>
+                                            <li>🤖 Predictive impact modeling with 97% accuracy</li>
+                                            <li>🛰️ Real-time satellite environmental monitoring</li>
+                                            <li>🌍 Automatic compliance for 100+ countries</li>
+                                            <li>📊 Machine learning risk predictions</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6>Complete Automation:</h6>
+                                        <ul>
+                                            <li>⚡ 24-hour complete EIA generation</li>
+                                            <li>👥 Zero-touch stakeholder management</li>
+                                            <li>📱 Mobile app with AR site assessment</li>
+                                            <li>🔗 Blockchain-verified reports</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="{{ url_for('beta_access') }}" class="btn btn-danger">
+                                        Apply for V5.0 Beta Access
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Impact Calculator Modal -->
+<div class="modal fade" id="impactModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Quick Impact Calculator</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="impactForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Impact Type</label>
+                            <select class="form-control" name="impact_type">
+                                <option value="air_quality">Air Quality</option>
+                                <option value="noise">Noise</option>
+                                <option value="water">Water Resources</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Severity (1-5)</label>
+                            <input type="range" class="form-range" name="severity" min="1" max="5" value="3">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label>Likelihood (1-5)</label>
+                            <input type="range" class="form-range" name="likelihood" min="1" max="5" value="3">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Duration (months)</label>
+                            <input type="number" class="form-control" name="duration" value="12">
+                        </div>
+                    </div>
+                </form>
+                <div id="impactResults" class="mt-3"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="performCalculation()">Calculate</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function calculateImpacts() {
+    $('#impactModal').modal('show');
+}
+
+function performCalculation() {
+    var formData = {
+        impact_type: $('[name="impact_type"]').val(),
+        severity: $('[name="severity"]').val(),
+        likelihood: $('[name="likelihood"]').val(),
+        duration: $('[name="duration"]').val()
+    };
+    
+    $.ajax({
+        url: '/api/calculate-impacts',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(formData),
+        success: function(results) {
+            var html = '<div class="alert alert-info">';
+            html += '<h6>Impact Assessment Results:</h6>';
+            html += '<p>Risk Score: <strong>' + results.risk_score + '</strong></p>';
+            html += '<p>Air Quality Impact: ' + JSON.stringify(results.air_quality) + '</p>';
+            html += '<p>Recommended Actions: Implement mitigation measures</p>';
+            html += '</div>';
+            $('#impactResults').html(html);
+        }
+    });
+}
+
+function runQuickAssessment() {
+    alert('Quick Assessment will analyze all environmental aspects and provide instant recommendations. This feature is enhanced in V5.0 with AI predictions!');
+}
+
+function viewRegulations() {
+    alert('Viewing applicable regulations for ' + '{{ project.location }}' + '. V5.0 will include real-time regulatory updates for 100+ countries!');
+}
+
+function inviteStakeholder() {
+    alert('Stakeholder invitation system. V5.0 will completely automate stakeholder identification and engagement!');
+}
+</script>
+{% endblock %}

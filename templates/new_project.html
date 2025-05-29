@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block title %}New Project - EIA Pro Platform{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-plus-circle"></i> Create New EIA Project</h4>
+                </div>
+                <div class="card-body">
+                    <form id="newProjectForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Project Name *</label>
+                                <input type="text" class="form-control" name="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Location *</label>
+                                <select class="form-control" name="location" required>
+                                    <option value="">Select Location</option>
+                                    <option value="UAE">United Arab Emirates</option>
+                                    <option value="KSA">Saudi Arabia</option>
+                                    <option value="Qatar">Qatar</option>
+                                    <option value="Kuwait">Kuwait</option>
+                                    <option value="Oman">Oman</option>
+                                    <option value="Bahrain">Bahrain</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Project Type *</label>
+                                <select class="form-control" name="type" required>
+                                    <option value="">Select Type</option>
+                                    <option value="construction">Construction & Real Estate</option>
+                                    <option value="infrastructure">Infrastructure</option>
+                                    <option value="industrial">Industrial</option>
+                                    <option value="energy">Energy & Utilities</option>
+                                    <option value="mining">Mining & Extractives</option>
+                                    <option value="oil_gas">Oil & Gas</option>
+                                    <option value="renewable">Renewable Energy</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Project Area (hectares) *</label>
+                                <input type="number" class="form-control" name="area" min="0.1" step="0.1" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Project Duration (months) *</label>
+                                <input type="number" class="form-control" name="duration" min="1" value="12" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Estimated Budget (USD)</label>
+                                <input type="number" class="form-control" name="budget" min="0">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Project Description</label>
+                            <textarea class="form-control" name="description" rows="3"></textarea>
+                        </div>
+
+                        <hr>
+
+                        <h5 class="mb-3">Select Assessment Modules</h5>
+                        <div class="row">
+                            <div class="col-md-4 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="modules" value="air_quality" checked>
+                                    <label class="form-check-label">
+                                        <i class="fas fa-wind"></i> Air Quality Assessment
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="modules" value="noise" checked>
+                                    <label class="form-check-label">
+                                        <i class="fas fa-volume-up"></i> Noise Impact Assessment
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="modules" value="water" checked>
+                                    <label class="form-check-label">
+                                        <i class="fas fa-tint"></i> Water Resources Assessment
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="modules" value="ecology">
+                                    <label class="form-check-label">
+                                        <i class="fas fa-leaf"></i> Ecological Assessment
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="modules" value="social">
+                                    <label class="form-check-label">
+                                        <i class="fas fa-users"></i> Social Impact Assessment
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="modules" value="traffic">
+                                    <label class="form-check-label">
+                                        <i class="fas fa-car"></i> Traffic Impact Assessment
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-3">
+                            <i class="fas fa-info-circle"></i> 
+                            <strong>Version 1.0</strong> includes basic assessments. 
+                            <strong>Version 5.0</strong> will add AI-powered predictive analysis, satellite monitoring, and complete automation!
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-gradient btn-lg">
+                                <i class="fas fa-rocket"></i> Create Project
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$('#newProjectForm').on('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    var formData = {
+        name: $('[name="name"]').val(),
+        location: $('[name="location"]').val(),
+        type: $('[name="type"]').val(),
+        area: $('[name="area"]').val(),
+        duration: $('[name="duration"]').val(),
+        budget: $('[name="budget"]').val(),
+        description: $('[name="description"]').val(),
+        modules: []
+    };
+    
+    // Get selected modules
+    $('[name="modules"]:checked').each(function() {
+        formData.modules.push($(this).val());
+    });
+    
+    // Submit via AJAX
+    $.ajax({
+        url: '/api/create-project',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(formData),
+        success: function(response) {
+            if (response.success) {
+                // Redirect to project dashboard
+                window.location.href = '/project/' + response.project_id;
+            }
+        },
+        error: function() {
+            alert('Error creating project. Please try again.');
+        }
+    });
+});
+</script>
+{% endblock %}

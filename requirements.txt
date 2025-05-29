@@ -3,21 +3,28 @@ numpy>=1.24.0
 pandas>=2.0.0
 scipy>=1.10.0
 scikit-learn>=1.3.0
+python-dateutil>=2.8.0
 
-# Geospatial analysis
-geopandas>=0.14.0
-shapely>=2.0.0
-folium>=0.15.0
-rasterio>=1.3.0
-
-# Environmental modeling
-pint>=0.22
-pyproj>=3.6.0
+# Database
+sqlalchemy>=2.0.0
+alembic>=1.13.0
+psycopg2-binary>=2.9.0
 
 # API framework
 fastapi>=0.100.0
 uvicorn>=0.25.0
 pydantic>=2.5.0
+pydantic[email]>=2.5.0
+python-multipart>=0.0.6
+
+# Web framework (for demo application)
+Flask>=2.3.0
+Flask-Session>=0.5.0
+
+# Authentication & Security
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+python-dotenv>=1.0.0
 
 # Data processing
 openpyxl>=3.1.0
@@ -33,6 +40,17 @@ dash>=2.14.0
 # PDF generation
 reportlab>=4.0.0
 WeasyPrint>=60.0
+Pillow>=10.0.0
+
+# Geospatial analysis
+geopandas>=0.14.0
+shapely>=2.0.0
+folium>=0.15.0
+rasterio>=1.3.0
+
+# Environmental modeling
+pint>=0.22
+pyproj>=3.6.0
 
 # Testing
 pytest>=7.4.0
@@ -43,7 +61,20 @@ pytest-asyncio>=0.21.0
 black>=23.0.0
 flake8>=6.0.0
 mypy>=1.8.0
+pre-commit>=3.5.0
 
 # Environmental specific
 windrose>=1.8.0  # Wind analysis
 noise>=1.1.0  # Noise calculations
+
+# Background tasks (optional)
+celery>=5.3.0
+redis>=5.0.0
+
+# Monitoring & Logging
+structlog>=24.0.0
+python-json-logger>=2.0.0
+
+# HTTP client
+httpx>=0.25.0
+aiohttp>=3.9.0

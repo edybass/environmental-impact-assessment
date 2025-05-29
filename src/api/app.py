@@ -1,151 +1,352 @@
 """
 EIA Tool API
-RESTful API for Environmental Impact Assessment
+Professional Environmental Impact Assessment API for UAE/KSA
+
+Author: Edy Bassil
+Email: bassileddy@gmail.com
 """
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from typing import Dict, List, Optional
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
+from starlette.exceptions import HTTPException as StarletteHTTPException
+import logging
+import time
+from contextlib import asynccontextmanager
 import sys
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from src.assessment import EIAScreening
-from src.analysis import ConstructionImpact
+from src.models import init_database
+from src.config import get_config
+from src.api.endpoints import all_routers
+from src.services import ServiceException
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+# Load configuration
+config = get_config()
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application lifespan events."""
+    # Startup
+    logger.info("Starting EIA Tool API...")
+    
+    # Initialize database
+    try:
+        init_database()
+        logger.info("Database initialized successfully")
+    except Exception as e:
+        logger.error(f"Failed to initialize database: {e}")
+        raise
+    
+    # Validate configuration
+    try:
+        config.validate()
+        logger.info("Configuration validated successfully")
+    except Exception as e:
+        logger.error(f"Configuration validation failed: {e}")
+        raise
+    
+    yield
+    
+    # Shutdown
+    logger.info("Shutting down EIA Tool API...")
+
+
+# Create FastAPI application
 app = FastAPI(
-    title="EIA Tool API",
-    description="Environmental Impact Assessment API for UAE/KSA",
-    version="1.0.0"
+    title="Environmental Impact Assessment API",
+    description="""
+    ## Professional EIA Tool for UAE & Saudi Arabia 🌿
+    
+    Comprehensive environmental impact assessment and monitoring system designed 
+    specifically for construction projects in the Gulf region.
+    
+    ### Features:
+    - 📋 **Project Management**: Create and track construction projects
+    - 🔍 **Environmental Screening**: Automated EIA requirement assessment
+    - 📊 **Impact Analysis**: Carbon footprint, water, waste, and biodiversity
+    - ⚠️ **Risk Assessment**: ISO 31000 compliant risk management
+    - 📏 **Compliance Checking**: UAE/KSA regulatory compliance
+    - 📈 **Real-time Monitoring**: Environmental parameter tracking
+    - 📑 **Reporting**: Comprehensive reports and dashboards
+    
+    ### Supported Jurisdictions:
+    - 🇦🇪 UAE (Federal, Dubai, Abu Dhabi, Sharjah)
+    - 🇸🇦 Saudi Arabia (National, NEOM)
+    
+    ### API Authentication:
+    All endpoints (except registration and login) require Bearer token authentication.
+    
+    ### Contact:
+    - **Developer**: Edy Bassil
+    - **Email**: bassileddy@gmail.com
+    - **GitHub**: [Environmental Impact Assessment](https://github.com/edybass/environmental-impact-assessment)
+    """,
+    version="2.0.0",
+    docs_url="/api/docs",
+    redoc_url="/api/redoc",
+    openapi_url="/api/openapi.json",
+    lifespan=lifespan
 )
 
+# Add middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=config.api.cors_origins,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-
-class ScreeningRequest(BaseModel):
-    project_type: str
-    location: str
-    project_size: float
-    duration: int
-    sensitive_receptors: List[str] = []
-    water_usage: float = 0
-    near_protected_area: bool = False
+# Add trusted host middleware for security
+if config.env == "production":
+    app.add_middleware(
+        TrustedHostMiddleware,
+        allowed_hosts=["*.environmental-assessment.com", "localhost"]
+    )
 
 
-class NoiseRequest(BaseModel):
-    equipment: List[str]
-    working_hours: str
-    nearest_receptor_distance: float
-    receptor_type: str = "residential"
-    barriers: bool = False
+# Request logging middleware
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    """Log all API requests."""
+    start_time = time.time()
+    
+    # Log request
+    logger.info(f"Request: {request.method} {request.url.path}")
+    
+    # Process request
+    response = await call_next(request)
+    
+    # Calculate duration
+    duration = time.time() - start_time
+    
+    # Log response
+    logger.info(
+        f"Response: {request.method} {request.url.path} "
+        f"- Status: {response.status_code} - Duration: {duration:.3f}s"
+    )
+    
+    # Add custom headers
+    response.headers["X-Process-Time"] = str(duration)
+    response.headers["X-API-Version"] = app.version
+    
+    return response
 
 
-class DustRequest(BaseModel):
-    soil_type: str
-    moisture_content: float
-    wind_speed: float
-    area_disturbed: float
-    mitigation_measures: List[str] = []
+# Exception handlers
+@app.exception_handler(ServiceException)
+async def service_exception_handler(request: Request, exc: ServiceException):
+    """Handle service layer exceptions."""
+    logger.error(f"Service exception: {exc}")
+    return JSONResponse(
+        status_code=status.HTTP_400_BAD_REQUEST,
+        content={
+            "detail": str(exc),
+            "code": exc.code,
+            "type": "service_error"
+        }
+    )
 
 
-@app.get("/")
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    """Handle request validation errors."""
+    logger.error(f"Validation error: {exc}")
+    return JSONResponse(
+        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        content={
+            "detail": exc.errors(),
+            "type": "validation_error"
+        }
+    )
+
+
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(request: Request, exc: StarletteHTTPException):
+    """Handle HTTP exceptions."""
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={
+            "detail": exc.detail,
+            "type": "http_error"
+        }
+    )
+
+
+@app.exception_handler(Exception)
+async def general_exception_handler(request: Request, exc: Exception):
+    """Handle unexpected exceptions."""
+    logger.error(f"Unexpected error: {exc}", exc_info=True)
+    
+    # Don't expose internal errors in production
+    if config.env == "production":
+        detail = "An unexpected error occurred"
+    else:
+        detail = str(exc)
+    
+    return JSONResponse(
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        content={
+            "detail": detail,
+            "type": "internal_error"
+        }
+    )
+
+
+# Register routers
+for router in all_routers:
+    app.include_router(router)
+
+
+# Root endpoint
+@app.get("/", tags=["Root"])
 async def root():
+    """API root endpoint with system information."""
     return {
-        "message": "EIA Tool API",
-        "endpoints": {
-            "/screening": "EIA screening assessment",
-            "/impact/noise": "Construction noise assessment",
-            "/impact/dust": "Construction dust assessment",
-            "/docs": "API documentation"
+        "name": config.app_name,
+        "version": config.app_version,
+        "environment": config.env,
+        "author": config.app_author,
+        "documentation": "/api/docs",
+        "health": "/health",
+        "features": config.features
+    }
+
+
+# Health check endpoint
+@app.get("/health", tags=["Health"])
+async def health_check():
+    """Health check endpoint for monitoring."""
+    try:
+        # Check database connection
+        from src.models import get_session
+        db = get_session()
+        db.execute("SELECT 1")
+        db.close()
+        db_status = "healthy"
+    except Exception as e:
+        logger.error(f"Database health check failed: {e}")
+        db_status = "unhealthy"
+    
+    return {
+        "status": "healthy" if db_status == "healthy" else "degraded",
+        "timestamp": time.time(),
+        "services": {
+            "database": db_status,
+            "api": "healthy"
+        },
+        "version": app.version,
+        "environment": config.env
+    }
+
+
+# API Information endpoint
+@app.get("/api/info", tags=["Information"])
+async def api_info():
+    """Get API configuration and capabilities."""
+    return {
+        "version": app.version,
+        "environment": config.env,
+        "features": config.features,
+        "jurisdictions": [
+            "UAE Federal", "Dubai", "Abu Dhabi", "Sharjah",
+            "KSA National", "Riyadh", "Jeddah", "NEOM"
+        ],
+        "parameters": {
+            "air_quality": ["pm10", "pm25", "nox", "so2", "co", "voc"],
+            "noise": ["peak_level", "average_level"],
+            "water": ["consumption", "quality", "discharge"],
+            "waste": ["generation", "recycling", "disposal"]
+        },
+        "thresholds": {
+            "UAE": {
+                "pm10_24hr": config.regional.uae_pm10_limit,
+                "pm25_24hr": config.regional.uae_pm25_limit,
+                "noise_residential_day": config.regional.uae_noise_residential_day
+            },
+            "KSA": {
+                "pm10_24hr": config.regional.ksa_pm10_limit,
+                "pm25_24hr": config.regional.ksa_pm25_limit,
+                "noise_day": config.regional.ksa_noise_day
+            }
         }
     }
 
 
-@app.post("/api/screening")
-async def screening_assessment(request: ScreeningRequest):
-    """Perform EIA screening assessment."""
-    try:
-        screening = EIAScreening(request.project_type, request.location)
-
-        project_data = {
-            "project_size": request.project_size,
-            "duration": request.duration,
-            "sensitive_receptors": request.sensitive_receptors,
-            "water_usage": request.water_usage,
-            "near_protected_area": request.near_protected_area
+# Custom OpenAPI schema
+def custom_openapi():
+    """Customize OpenAPI schema."""
+    if app.openapi_schema:
+        return app.openapi_schema
+    
+    openapi_schema = app.openapi()
+    
+    # Add security scheme
+    openapi_schema["components"]["securitySchemes"] = {
+        "BearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT",
+            "description": "JWT token obtained from /api/auth/login endpoint"
         }
-
-        result = screening.assess(project_data)
-
-        return {
-            "eia_required": result.eia_required,
-            "eia_level": result.eia_level,
-            "key_concerns": result.key_concerns,
-            "regulatory_requirements": result.regulatory_requirements,
-            "specialist_studies": result.specialist_studies,
-            "estimated_duration": result.estimated_duration
+    }
+    
+    # Add tags description
+    openapi_schema["tags"] = [
+        {
+            "name": "Authentication",
+            "description": "User registration, login, and authentication"
+        },
+        {
+            "name": "Projects",
+            "description": "Project management and lifecycle"
+        },
+        {
+            "name": "Assessments",
+            "description": "Environmental impact assessments"
+        },
+        {
+            "name": "Monitoring",
+            "description": "Real-time environmental monitoring"
+        },
+        {
+            "name": "Compliance",
+            "description": "Regulatory compliance checking"
+        },
+        {
+            "name": "Reports",
+            "description": "Report generation and export"
         }
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+    ]
+    
+    app.openapi_schema = openapi_schema
+    return app.openapi_schema
 
 
-@app.post("/api/impact/noise")
-async def noise_assessment(request: NoiseRequest):
-    """Assess construction noise impact."""
-    try:
-        analyzer = ConstructionImpact()
-        result = analyzer.assess_noise(
-            equipment=request.equipment,
-            working_hours=request.working_hours,
-            nearest_receptor_distance=request.nearest_receptor_distance,
-            receptor_type=request.receptor_type,
-            barriers=request.barriers
-        )
-
-        return {
-            "peak_noise_level": result.peak_noise_level,
-            "average_noise_level": result.average_noise_level,
-            "exceeds_limit": result.exceeds_limit,
-            "affected_receptors": result.affected_receptors,
-            "mitigation_required": result.mitigation_required,
-            "mitigation_measures": result.mitigation_measures
-        }
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
-
-
-@app.post("/api/impact/dust")
-async def dust_assessment(request: DustRequest):
-    """Assess construction dust impact."""
-    try:
-        analyzer = ConstructionImpact()
-        result = analyzer.assess_dust(
-            soil_type=request.soil_type,
-            moisture_content=request.moisture_content,
-            wind_speed=request.wind_speed,
-            area_disturbed=request.area_disturbed,
-            mitigation_measures=request.mitigation_measures
-        )
-
-        return {
-            "pm10_concentration": result.pm10_concentration,
-            "pm25_concentration": result.pm25_concentration,
-            "deposition_rate": result.deposition_rate,
-            "exceeds_limit": result.exceeds_limit,
-            "affected_area_radius": result.affected_area_radius,
-            "mitigation_effectiveness": result.mitigation_effectiveness
-        }
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+app.openapi = custom_openapi
 
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    
+    # Run the application
+    uvicorn.run(
+        "app:app",
+        host=config.api.host,
+        port=config.api.port,
+        reload=config.api.debug,
+        log_level="info" if config.debug else "warning"
+    )
