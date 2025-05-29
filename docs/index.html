@@ -3,34 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EIA Pro Platform - Revolutionary Environmental Assessment | Version 5.0 Coming Soon</title>
-    <meta name="description" content="Version 1.0 available now! Version 5.0 coming with full AI automation. Replace expensive consultants - 99% cost reduction, 95% time savings.">
+    <title>EIA Pro - Comprehensive Environmental Assessment Platform</title>
+    <meta name="description" content="Professional Environmental Impact Assessment with 9 integrated modules. Complete regulatory compliance for UAE/KSA.">
     <meta name="author" content="Edy Bassil">
-    <meta name="keywords" content="EIA, environmental assessment, construction, UAE, Saudi Arabia, noise modeling, dust assessment">
-
+    
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
-
+    
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.css">
+    
     <style>
         :root {
-            --primary-green: #2e7d32;
-            --primary-dark: #1b5e20;
-            --primary-light: #4caf50;
-            --secondary-blue: #1976d2;
-            --secondary-dark: #0d47a1;
-            --secondary-light: #42a5f5;
-            --warning: #ff9800;
-            --danger: #f44336;
-            --success: #4caf50;
-            --info: #2196f3;
-            --background: #f5f7fa;
-            --surface: #ffffff;
-            --text-primary: #212121;
-            --text-secondary: #757575;
-            --border: #e0e0e0;
-            --shadow-1: 0 2px 4px rgba(0,0,0,0.1);
-            --shadow-2: 0 4px 8px rgba(0,0,0,0.15);
-            --shadow-3: 0 8px 16px rgba(0,0,0,0.2);
+            /* Professional Color Palette */
+            --primary: #059669;
+            --primary-light: #10b981;
+            --primary-dark: #047857;
+            --secondary: #3b82f6;
+            --accent: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --info: #06b6d4;
+            
+            /* Module Colors */
+            --air-color: #3b82f6;
+            --noise-color: #8b5cf6;
+            --water-color: #06b6d4;
+            --waste-color: #f59e0b;
+            --bio-color: #10b981;
+            --soil-color: #a78bfa;
+            --socio-color: #ec4899;
+            --risk-color: #ef4444;
+            --emp-color: #14b8a6;
+            
+            /* Neutrals */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Spacing & Sizing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --spacing-3xl: 4rem;
+            
+            /* Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.15);
         }
 
         * {
@@ -40,173 +82,131 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--background);
-            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-green) 100%);
+        /* Professional Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
             color: white;
-            padding: 3rem 0;
+            padding: var(--spacing-2xl) 0;
             position: relative;
             overflow: hidden;
         }
 
-        header::before {
+        .header::before {
             content: '';
             position: absolute;
             top: -50%;
             right: -10%;
-            width: 50%;
+            width: 60%;
             height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            transform: rotate(45deg);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+            position: relative;
         }
 
         .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.95;
-            margin-bottom: 2rem;
-        }
-
-        .header-badges {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        /* Navigation */
-        nav {
-            background: var(--surface);
-            box-shadow: var(--shadow-1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-xl);
         }
 
-        .nav-links {
+        .header-left h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-sm);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-left .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .header-stats {
             display: flex;
-            gap: 2rem;
-            list-style: none;
-            padding: 1rem 0;
+            gap: var(--spacing-xl);
+            background: rgba(255,255,255,0.15);
+            padding: var(--spacing-lg) var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            backdrop-filter: blur(10px);
         }
 
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-green);
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        /* Assessment Wizard */
-        .assessment-wizard {
-            background: var(--surface);
-            border-radius: 12px;
-            box-shadow: var(--shadow-2);
-            margin: 2rem 0;
-            overflow: hidden;
-        }
-
-        .wizard-steps {
-            display: flex;
-            background: #f5f5f5;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .wizard-step {
-            flex: 1;
-            padding: 1.5rem;
+        .stat {
             text-align: center;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s;
         }
 
-        .wizard-step.active {
-            background: var(--surface);
-            color: var(--primary-green);
-            font-weight: 600;
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
         }
 
-        .wizard-step.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--primary-green);
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
         }
 
-        .wizard-content {
-            padding: 3rem;
+        /* Main Content */
+        .main-content {
+            padding: var(--spacing-3xl) 0;
         }
 
-        /* Forms */
-        .form-section {
-            margin-bottom: 2rem;
+        /* Assessment Form Section */
+        .assessment-section {
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-2xl);
+            margin-bottom: var(--spacing-3xl);
         }
 
-        .form-section h3 {
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 2px solid var(--gray-100);
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-light);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.5rem;
         }
 
+        .section-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        /* Form Grid */
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
         }
 
         .form-group {
@@ -214,298 +214,410 @@
             flex-direction: column;
         }
 
-        label {
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .form-label {
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.875rem;
         }
 
-        input, select, textarea {
-            padding: 0.875rem;
-            border: 2px solid var(--border);
-            border-radius: 8px;
+        .form-control {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1.5px solid var(--gray-300);
+            border-radius: var(--radius-md);
             font-size: 1rem;
-            transition: all 0.3s;
-            background: var(--surface);
+            transition: all 0.2s;
+            background: white;
         }
 
-        input:focus, select:focus, textarea:focus {
+        .form-control:focus {
             outline: none;
-            border-color: var(--primary-green);
-            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
         }
 
-        /* Buttons */
-        .btn {
-            padding: 0.875rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
+        /* Assessment Modules Grid */
+        .modules-section {
+            margin-top: var(--spacing-xl);
+        }
+
+        .modules-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .modules-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .modules-header p {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .module-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
             transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--module-color, var(--primary));
+        }
+
+        .module-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .module-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .module-card[data-module="air"] { --module-color: var(--air-color); }
+        .module-card[data-module="noise"] { --module-color: var(--noise-color); }
+        .module-card[data-module="water"] { --module-color: var(--water-color); }
+        .module-card[data-module="waste"] { --module-color: var(--waste-color); }
+        .module-card[data-module="bio"] { --module-color: var(--bio-color); }
+        .module-card[data-module="soil"] { --module-color: var(--soil-color); }
+        .module-card[data-module="socio"] { --module-color: var(--socio-color); }
+        .module-card[data-module="risk"] { --module-color: var(--risk-color); }
+        .module-card[data-module="emp"] { --module-color: var(--emp-color); }
+
+        .module-card[data-module="air"] .module-icon { background: rgba(59, 130, 246, 0.1); color: var(--air-color); }
+        .module-card[data-module="noise"] .module-icon { background: rgba(139, 92, 246, 0.1); color: var(--noise-color); }
+        .module-card[data-module="water"] .module-icon { background: rgba(6, 182, 212, 0.1); color: var(--water-color); }
+        .module-card[data-module="waste"] .module-icon { background: rgba(245, 158, 11, 0.1); color: var(--waste-color); }
+        .module-card[data-module="bio"] .module-icon { background: rgba(16, 185, 129, 0.1); color: var(--bio-color); }
+        .module-card[data-module="soil"] .module-icon { background: rgba(167, 139, 250, 0.1); color: var(--soil-color); }
+        .module-card[data-module="socio"] .module-icon { background: rgba(236, 72, 153, 0.1); color: var(--socio-color); }
+        .module-card[data-module="risk"] .module-icon { background: rgba(239, 68, 68, 0.1); color: var(--risk-color); }
+        .module-card[data-module="emp"] .module-icon { background: rgba(20, 184, 166, 0.1); color: var(--emp-color); }
+
+        .module-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        .module-description {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.5;
+        }
+
+        .module-features {
+            list-style: none;
+            font-size: 0.875rem;
+        }
+
+        .module-features li {
+            padding: var(--spacing-xs) 0;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .module-features li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        /* Assessment Button */
+        .assessment-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            margin-top: var(--spacing-2xl);
+        }
+
+        .btn {
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
+            gap: var(--spacing-sm);
         }
 
         .btn-primary {
-            background: var(--primary-green);
+            background: var(--primary);
             color: white;
         }
 
         .btn-primary:hover {
             background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-2);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
         }
 
         .btn-secondary {
-            background: var(--secondary-blue);
-            color: white;
+            background: var(--gray-100);
+            color: var(--gray-700);
+            border: 1px solid var(--gray-300);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-green);
-            color: var(--primary-green);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-green);
-            color: white;
+        .btn-secondary:hover {
+            background: var(--gray-200);
         }
 
         /* Results Section */
         .results-section {
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            padding: var(--spacing-2xl);
+            margin-top: var(--spacing-3xl);
             display: none;
-            margin-top: 3rem;
-        }
-
-        .results-section.show {
-            display: block;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .results-card {
-            background: var(--surface);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-1);
         }
 
         .results-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding-bottom: var(--spacing-xl);
+            border-bottom: 2px solid var(--gray-100);
         }
 
         .results-header h3 {
-            color: var(--primary-dark);
-            font-size: 1.5rem;
-        }
-
-        .impact-level {
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .impact-high {
-            background: #ffebee;
-            color: #c62828;
-        }
-
-        .impact-medium {
-            background: #fff3e0;
-            color: #ef6c00;
-        }
-
-        .impact-low {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-
-        /* Metrics Grid */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .metric-card {
-            background: #f5f5f5;
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .metric-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-2);
-        }
-
-        .metric-value {
-            font-size: 2.5rem;
+            font-size: 1.75rem;
             font-weight: 700;
-            color: var(--primary-green);
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-sm);
         }
 
-        .metric-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
+        .compliance-score {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            background: var(--gray-50);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            margin-top: var(--spacing-md);
         }
 
-        /* Mitigation Measures */
-        .mitigation-list {
-            list-style: none;
-            margin-top: 1rem;
+        .score-value {
+            font-size: 2rem;
+            font-weight: 700;
         }
 
-        .mitigation-item {
-            padding: 1rem;
-            background: #f5f5f5;
-            border-radius: 8px;
-            margin-bottom: 0.75rem;
+        .score-value.high { color: var(--success); }
+        .score-value.medium { color: var(--warning); }
+        .score-value.low { color: var(--error); }
+
+        /* Results Grid */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .result-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--gray-200);
+        }
+
+        .result-card-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
         }
 
-        .mitigation-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-light);
-            color: white;
-            border-radius: 50%;
+        .result-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
-        /* Info Cards */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+        .result-title {
+            font-weight: 600;
+            color: var(--gray-900);
         }
 
-        .info-card {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow-1);
-            transition: transform 0.3s;
+        .result-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+        }
+
+        .metric-label {
+            color: var(--gray-600);
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-compliant {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .status-review {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .status-non-compliant {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+        }
+
+        /* Critical Issues */
+        .critical-issues {
+            background: rgba(239, 68, 68, 0.05);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .critical-issues h4 {
+            color: var(--error);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .critical-issues ul {
+            list-style: none;
+            font-size: 0.875rem;
+        }
+
+        .critical-issues li {
+            padding: var(--spacing-xs) 0;
+            color: var(--gray-700);
+            padding-left: var(--spacing-lg);
             position: relative;
-            overflow: hidden;
         }
 
-        .info-card::before {
-            content: '';
+        .critical-issues li::before {
+            content: '⚠';
+            color: var(--error);
             position: absolute;
-            top: 0;
             left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--primary-green);
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-3);
-        }
-
-        .info-card h4 {
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        /* Features Section */
-        .features {
-            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-            padding: 4rem 0;
-            margin: 4rem -2rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .feature {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            transition: transform 0.3s;
-            box-shadow: var(--shadow-1);
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-3);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
         }
 
         /* Footer */
-        footer {
-            background: var(--primary-dark);
+        .footer {
+            background: var(--gray-900);
             color: white;
-            padding: 3rem 0;
+            padding: var(--spacing-3xl) 0;
+            margin-top: var(--spacing-3xl);
+        }
+
+        .footer-content {
             text-align: center;
-            margin-top: 4rem;
         }
 
-        footer a {
-            color: var(--primary-light);
+        .footer-content p {
+            opacity: 0.8;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-lg);
+        }
+
+        .footer-links a {
+            color: white;
             text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .footer-links a:hover {
+            opacity: 1;
         }
 
         /* Loading State */
         .loading {
             display: none;
             text-align: center;
-            padding: 2rem;
+            padding: var(--spacing-3xl);
+        }
+
+        .loading.active {
+            display: block;
         }
 
         .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--border);
-            border-top-color: var(--primary-green);
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--gray-200);
+            border-top-color: var(--primary);
             border-radius: 50%;
+            margin: 0 auto var(--spacing-lg);
             animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
         }
 
         @keyframes spin {
@@ -514,1057 +626,861 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+            .header-content {
+                flex-direction: column;
+                text-align: center;
             }
 
-            .wizard-steps {
-                flex-direction: column;
+            .header-stats {
+                width: 100%;
+                justify-content: space-around;
             }
 
             .form-grid {
                 grid-template-columns: 1fr;
             }
 
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
+            .modules-grid {
+                grid-template-columns: 1fr;
             }
-        }
 
-        /* Chart Container */
-        .chart-container {
-            margin: 2rem 0;
-            height: 400px;
-            background: #f5f5f5;
-            border-radius: 10px;
-            padding: 1rem;
-        }
-        
-        /* Animations */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Version 5.0 Marketing Banner -->
-    <div style="background: #ff6b6b; color: white; text-align: center; padding: 15px; font-weight: bold; position: relative; overflow: hidden;">
-        <div style="position: relative; z-index: 1;">
-            🚀 BREAKING: Version 5.0 Beta Testing Now Open - Limited to 100 Organizations! 
-            <a href="#beta-signup" style="color: white; margin-left: 15px; text-decoration: underline;">Apply Now →</a>
-        </div>
-        <div style="position: absolute; top: 0; left: -100px; width: 200%; height: 100%; background: linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.1) 50%, transparent 51%); animation: shine 3s infinite;"></div>
-    </div>
-    
-    <style>
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-    </style>
-
-    <header>
-        <div class="header-content">
-            <h1>
-                <span>🌿</span>
-                EIA Pro Platform - Revolutionary Environmental Assessment
-            </h1>
-            <p class="subtitle">Replace Expensive Consultants with AI • Version 1.0 Available Now • Version 5.0 Coming Very Soon!</p>
-            <div class="header-badges">
-                <span class="badge" style="background: #4CAF50;">✅ Version 1.0 Public</span>
-                <span class="badge" style="background: #ff6b6b; animation: pulse 2s infinite;">🚀 Version 5.0 Beta</span>
-                <span class="badge">💰 99% Cost Reduction</span>
-                <span class="badge">⚡ 95% Time Savings</span>
-                <span class="badge">🇦🇪 UAE Compliant</span>
-                <span class="badge">🇸🇦 KSA Compliant</span>
-            </div>
-            
-            <!-- Version Comparison Alert -->
-            <div style="background: rgba(255,255,255,0.15); border-radius: 10px; padding: 20px; margin-top: 20px; backdrop-filter: blur(10px);">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-                    <div>
-                        <h3 style="margin: 0; font-size: 1.2rem;">🎯 Current: Basic EIA Reports</h3>
-                        <p style="margin: 0; opacity: 0.9;">Version 1.0 - Working now, saving companies millions</p>
+    <!-- Professional Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>🌿 EIA Pro Platform</h1>
+                    <p class="subtitle">Comprehensive Environmental Impact Assessment</p>
+                </div>
+                <div class="header-stats">
+                    <div class="stat">
+                        <span class="stat-value">9</span>
+                        <span class="stat-label">Assessment Modules</span>
                     </div>
-                    <div>
-                        <h3 style="margin: 0; font-size: 1.2rem; color: #ffeb3b;">🚀 Coming Soon: Full AI Automation</h3>
-                        <p style="margin: 0; opacity: 0.9;">Version 5.0 - Complete consultant replacement in 24 hours</p>
+                    <div class="stat">
+                        <span class="stat-value">95%</span>
+                        <span class="stat-label">Time Saved</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Compliance</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <nav>
-        <div class="nav-content">
-            <ul class="nav-links">
-                <li><a href="#assessment">New Assessment</a></li>
-                <li><a href="#methodology">Methodology</a></li>
-                <li><a href="#regulations">Regulations</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-            <div>
-                <a href="https://github.com/edybass/environmental-impact-assessment" target="_blank" class="btn btn-outline">
-                    View on GitHub
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Platform Statistics -->
-    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 0;">
+    <!-- Main Content -->
+    <main class="main-content">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem;">Platform Performance Metrics</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-                <div style="text-align: center; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 10px; backdrop-filter: blur(10px);">
-                    <div style="font-size: 3rem; font-weight: bold; margin-bottom: 10px;">527</div>
-                    <div style="font-size: 1.2rem;">EIA Reports Generated</div>
-                    <div style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Version 1.0 Results</div>
+            <!-- Assessment Form -->
+            <section class="assessment-section">
+                <div class="section-header">
+                    <div class="section-icon">📋</div>
+                    <h2>Project Information</h2>
                 </div>
-                <div style="text-align: center; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 10px; backdrop-filter: blur(10px);">
-                    <div style="font-size: 3rem; font-weight: bold; margin-bottom: 10px;">$2.5M</div>
-                    <div style="font-size: 1.2rem;">Client Savings Achieved</div>
-                    <div style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Vs. Traditional Consultants</div>
+
+                <form id="assessmentForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="projectName">Project Name *</label>
+                            <input type="text" class="form-control" id="projectName" required 
+                                   placeholder="e.g., Dubai Marina Tower">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="projectType">Project Type *</label>
+                            <select class="form-control" id="projectType" required>
+                                <option value="">Select type...</option>
+                                <option value="residential">Residential</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="industrial">Industrial</option>
+                                <option value="infrastructure">Infrastructure</option>
+                                <option value="mixed_use">Mixed Use</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="location">Location *</label>
+                            <input type="text" class="form-control" id="location" required 
+                                   placeholder="e.g., Dubai, UAE">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="projectSize">Project Size (m²) *</label>
+                            <input type="number" class="form-control" id="projectSize" required 
+                                   placeholder="e.g., 25000">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="duration">Duration (months)</label>
+                            <input type="number" class="form-control" id="duration" 
+                                   placeholder="e.g., 24" value="24">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="budget">Budget (Million USD)</label>
+                            <input type="number" class="form-control" id="budget" 
+                                   placeholder="e.g., 50" step="0.1">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="workers">Estimated Workers</label>
+                            <input type="number" class="form-control" id="workers" 
+                                   placeholder="e.g., 200">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="nearestReceptor">Nearest Receptor (m)</label>
+                            <input type="number" class="form-control" id="nearestReceptor" 
+                                   placeholder="e.g., 100" value="100">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="soilType">Soil Type</label>
+                            <select class="form-control" id="soilType">
+                                <option value="sandy">Sandy</option>
+                                <option value="clay">Clay</option>
+                                <option value="rocky">Rocky</option>
+                                <option value="silt">Silt</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="waterUsage">Daily Water Usage (m³)</label>
+                            <input type="number" class="form-control" id="waterUsage" 
+                                   placeholder="e.g., 1000" value="1000">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="workingHours">Working Hours</label>
+                            <select class="form-control" id="workingHours">
+                                <option value="07:00-18:00">07:00-18:00 (Standard)</option>
+                                <option value="06:00-22:00">06:00-22:00 (Extended)</option>
+                                <option value="24hours">24 Hours</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Environmental Parameters Section -->
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--gray-900); font-size: 1.25rem;">Environmental Parameters</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="windSpeed">Average Wind Speed (km/h)</label>
+                            <input type="number" class="form-control" id="windSpeed" 
+                                   placeholder="e.g., 15" value="15">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="temperature">Average Temperature (°C)</label>
+                            <input type="number" class="form-control" id="temperature" 
+                                   placeholder="e.g., 28" value="28">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="vegetation">Existing Vegetation</label>
+                            <select class="form-control" id="vegetation">
+                                <option value="none">None/Desert</option>
+                                <option value="sparse">Sparse Vegetation</option>
+                                <option value="moderate">Moderate Vegetation</option>
+                                <option value="dense">Dense Vegetation</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="sensitiveReceptors">Sensitive Receptors Nearby</label>
+                            <select class="form-control" id="sensitiveReceptors" multiple style="height: 80px;">
+                                <option value="residential">Residential Areas</option>
+                                <option value="schools">Schools</option>
+                                <option value="hospitals">Hospitals</option>
+                                <option value="parks">Parks/Recreation</option>
+                                <option value="none">None</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="existingAirQuality">Baseline Air Quality</label>
+                            <select class="form-control" id="existingAirQuality">
+                                <option value="good">Good (< 50 AQI)</option>
+                                <option value="moderate">Moderate (50-100 AQI)</option>
+                                <option value="poor">Poor (> 100 AQI)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="noiseBaseline">Baseline Noise Level (dB)</label>
+                            <input type="number" class="form-control" id="noiseBaseline" 
+                                   placeholder="e.g., 55" value="55">
+                        </div>
+                    </div>
+                    
+                    <!-- Assessment Actions -->
+                    <div class="assessment-actions" style="margin-top: 2rem; margin-bottom: 0;">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="runComprehensiveAssessment()" style="padding: 1rem 2rem; font-size: 1.125rem;">
+                            <span>🚀</span> Run Comprehensive Assessment
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                            <span>↻</span> Reset Form
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Assessment Modules -->
+            <section class="modules-section" style="margin-top: 2rem;">
+                <div class="modules-header">
+                    <h2>Comprehensive Assessment Modules</h2>
+                    <p>Professional environmental impact assessment covering all regulatory requirements</p>
                 </div>
-                <div style="text-align: center; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 10px; backdrop-filter: blur(10px);">
-                    <div style="font-size: 3rem; font-weight: bold; margin-bottom: 10px;">75%</div>
-                    <div style="font-size: 1.2rem;">Time Reduction</div>
-                    <div style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">V5.0 Target: 95%</div>
-                </div>
-                <div style="text-align: center; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 10px; backdrop-filter: blur(10px);">
-                    <div style="font-size: 3rem; font-weight: bold; margin-bottom: 10px;">12</div>
-                    <div style="font-size: 1.2rem;">Countries Active</div>
-                    <div style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">V5.0 Target: 100+</div>
-                </div>
-            </div>
-            
-            <!-- Version Comparison -->
-            <div style="margin-top: 60px; background: rgba(255,255,255,0.1); border-radius: 15px; padding: 40px; backdrop-filter: blur(10px);">
-                <h3 style="text-align: center; margin-bottom: 30px; font-size: 2rem;">Version Evolution</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                    <div>
-                        <h4 style="color: #4CAF50; margin-bottom: 15px; font-size: 1.5rem;">✅ Version 1.0 - Available Now</h4>
-                        <ul style="list-style: none; padding: 0; line-height: 2;">
-                            <li>📊 Basic impact calculations</li>
-                            <li>📋 Risk assessment matrices</li>
-                            <li>📄 PDF report generation</li>
-                            <li>🌍 UAE/KSA compliance templates</li>
-                            <li>💰 Cost: $999/month</li>
+
+                <div class="modules-grid">
+                    <!-- Air Quality -->
+                    <div class="module-card" data-module="air">
+                        <div class="module-header">
+                            <div class="module-icon">🌬️</div>
+                            <div>
+                                <h3 class="module-title">Air Quality Assessment</h3>
+                            </div>
+                        </div>
+                        <p class="module-description">Comprehensive air quality impact analysis with dispersion modeling</p>
+                        <ul class="module-features">
+                            <li>PM10, PM2.5, TSP calculations</li>
+                            <li>Emission inventory development</li>
+                            <li>Health risk assessment</li>
+                            <li>Mitigation effectiveness analysis</li>
                         </ul>
                     </div>
-                    <div>
-                        <h4 style="color: #ffeb3b; margin-bottom: 15px; font-size: 1.5rem;">🚀 Version 5.0 - Coming Soon</h4>
-                        <ul style="list-style: none; padding: 0; line-height: 2;">
-                            <li>🤖 AI-powered impact prediction (97% accuracy)</li>
-                            <li>🌐 Global compliance engine (100+ countries)</li>
-                            <li>👥 Automated stakeholder management</li>
-                            <li>📡 Satellite environmental monitoring</li>
-                            <li>⚡ 24-hour complete EIA generation</li>
+
+                    <!-- Noise -->
+                    <div class="module-card" data-module="noise">
+                        <div class="module-header">
+                            <div class="module-icon">🔊</div>
+                            <div>
+                                <h3 class="module-title">Noise Impact Assessment</h3>
+                            </div>
+                        </div>
+                        <p class="module-description">Professional noise propagation modeling and impact analysis</p>
+                        <ul class="module-features">
+                            <li>Construction & operational noise</li>
+                            <li>ISO 9613-2 propagation modeling</li>
+                            <li>Receptor identification</li>
+                            <li>Noise barrier optimization</li>
+                        </ul>
+                    </div>
+
+                    <!-- Water Resources -->
+                    <div class="module-card" data-module="water">
+                        <div class="module-header">
+                            <div class="module-icon">💧</div>
+                            <div>
+                                <h3 class="module-title">Water Resources Assessment</h3>
+                            </div>
+                        </div>
+                        <p class="module-description">Complete water cycle analysis and sustainability assessment</p>
+                        <ul class="module-features">
+                            <li>Water demand calculations</li>
+                            <li>Wastewater generation & treatment</li>
+                            <li>Water balance & recycling</li>
+                            <li>Regional conservation compliance</li>
+                        </ul>
+                    </div>
+
+                    <!-- Waste Management -->
+                    <div class="module-card" data-module="waste">
+                        <div class="module-header">
+                            <div class="module-icon">♻️</div>
+                            <div>
+                                <h3 class="module-title">Waste Management Assessment</h3>
+                            </div>
+                        </div>
+                        <p class="module-description">Comprehensive waste stream analysis and management planning</p>
+                        <ul class="module-features">
+                            <li>Construction & demolition waste</li>
+                            <li>Operational waste streams</li>
+                            <li>Recycling & disposal planning</li>
+                            <li>Regional facility allocation</li>
+                        </ul>
+                    </div>
+
+                    <!-- Biodiversity -->
+                    <div class="module-card" data-module="bio">
+                        <div class="module-header">
+                            <div class="module-icon">🦋</div>
+                            <div>
+                                <h3 class="module-title">Biodiversity & Ecology</h3>
+                            </div>
+                        </div>
+                        <p class="module-description">Flora, fauna, and ecosystem services impact assessment</p>
+                        <ul class="module-features">
+                            <li>Species & habitat assessment</li>
+                            <li>Ecosystem services valuation</li>
+                            <li>Conservation planning</li>
+                            <li>Biodiversity offset calculations</li>
+                        </ul>
+                    </div>
+
+                    <!-- Soil & Geology -->
+                    <div class="module-card" data-module="soil">
+                        <div class="module-header">
+                            <div class="module-icon">🏔️</div>
+                            <div>
+                                <h3 class="module-title">Soil & Geological Assessment</h3>
+                            </div>
+                        </div>
+                        <p class="module-description">Geotechnical and contamination risk assessment</p>
+                        <ul class="module-features">
+                            <li>Soil quality & contamination</li>
+                            <li>Geological hazard analysis</li>
+                            <li>Seismic risk assessment</li>
+                            <li>Foundation recommendations</li>
+                        </ul>
+                    </div>
+
+                    <!-- Socio-Economic -->
+                    <div class="module-card" data-module="socio">
+                        <div class="module-header">
+                            <div class="module-icon">👥</div>
+                            <div>
+                                <h3 class="module-title">Socio-Economic Impact</h3>
+                            </div>
+                        </div>
+                        <p class="module-description">Community and economic impact assessment</p>
+                        <ul class="module-features">
+                            <li>Demographic impact analysis</li>
+                            <li>Traffic impact assessment</li>
+                            <li>Cultural heritage evaluation</li>
+                            <li>Community engagement planning</li>
+                        </ul>
+                    </div>
+
+                    <!-- Risk Assessment -->
+                    <div class="module-card" data-module="risk">
+                        <div class="module-header">
+                            <div class="module-icon">⚠️</div>
+                            <div>
+                                <h3 class="module-title">Risk Assessment</h3>
+                            </div>
+                        </div>
+                        <p class="module-description">Comprehensive multi-hazard risk assessment</p>
+                        <ul class="module-features">
+                            <li>Environmental risk matrices</li>
+                            <li>Health & safety evaluation</li>
+                            <li>Climate risk assessment</li>
+                            <li>Emergency response planning</li>
+                        </ul>
+                    </div>
+
+                    <!-- EMP -->
+                    <div class="module-card" data-module="emp">
+                        <div class="module-header">
+                            <div class="module-icon">📊</div>
+                            <div>
+                                <h3 class="module-title">Environmental Management Plan</h3>
+                            </div>
+                        </div>
+                        <p class="module-description">Integrated EMP with implementation framework</p>
+                        <ul class="module-features">
+                            <li>Mitigation measures design</li>
+                            <li>Monitoring programs</li>
+                            <li>Compliance frameworks</li>
+                            <li>Cost & timeline planning</li>
                         </ul>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <a href="#beta-signup" style="background: #ff6b6b; color: white; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; animation: pulse 2s infinite;">
-                        Apply for V5.0 Beta Access (Limited Spots)
-                    </a>
+            </section>
+
+            <!-- Loading State -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <h3>Running Comprehensive Environmental Assessment...</h3>
+                <p>Analyzing 9 environmental components</p>
+            </div>
+
+            <!-- Results Section -->
+            <section class="results-section" id="results">
+                <div class="results-header">
+                    <h3>Comprehensive Assessment Results</h3>
+                    <div class="compliance-score">
+                        <span>Overall Compliance Score:</span>
+                        <span class="score-value" id="complianceScore">-</span>
+                    </div>
+                </div>
+
+                <div class="results-grid" id="resultsGrid">
+                    <!-- Results will be populated here -->
+                </div>
+
+                <div class="critical-issues" id="criticalIssues" style="display: none;">
+                    <h4>⚠️ Critical Issues Identified</h4>
+                    <ul id="issuesList"></ul>
+                </div>
+
+                <div class="assessment-actions" style="margin-top: 2rem;">
+                    <button type="button" class="btn btn-primary" onclick="generateReport()">
+                        <span>📄</span> Generate Professional Report
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="exportResults()">
+                        <span>💾</span> Export Results
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2024 EIA Pro Platform - Professional Environmental Assessment</p>
+                <p>Created by Edy Bassil | bassileddy@gmail.com</p>
+                <div class="footer-links">
+                    <a href="#">Documentation</a>
+                    <a href="#">API Reference</a>
+                    <a href="#">Support</a>
+                    <a href="#">Contact</a>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="container">
-        <!-- Assessment Wizard -->
-        <div class="assessment-wizard" id="assessment">
-            <div class="wizard-steps">
-                <div class="wizard-step active" onclick="showStep(1)">
-                    1. Project Info
-                </div>
-                <div class="wizard-step" onclick="showStep(2)">
-                    2. Environmental Screening
-                </div>
-                <div class="wizard-step" onclick="showStep(3)">
-                    3. Impact Analysis
-                </div>
-                <div class="wizard-step" onclick="showStep(4)">
-                    4. Results & Mitigation
-                </div>
-            </div>
-
-            <div class="wizard-content">
-                <!-- Step 1: Project Info -->
-                <div id="step1" class="step-content">
-                    <div class="form-section">
-                        <h3>Project Information</h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-                            Enter basic information about your construction project
-                        </p>
-
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="project-name">Project Name</label>
-                                <input type="text" id="project-name" placeholder="e.g., Dubai Marina Tower">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="project-type">Project Type</label>
-                                <select id="project-type">
-                                    <option value="residential">Residential</option>
-                                    <option value="commercial">Commercial</option>
-                                    <option value="industrial">Industrial</option>
-                                    <option value="infrastructure">Infrastructure</option>
-                                    <option value="mixed_use">Mixed Use</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="location">Location</label>
-                                <select id="location">
-                                    <optgroup label="UAE">
-                                        <option value="Dubai">Dubai</option>
-                                        <option value="Abu Dhabi">Abu Dhabi</option>
-                                        <option value="Sharjah">Sharjah</option>
-                                        <option value="Ajman">Ajman</option>
-                                        <option value="RAK">Ras Al Khaimah</option>
-                                    </optgroup>
-                                    <optgroup label="Saudi Arabia">
-                                        <option value="Riyadh">Riyadh</option>
-                                        <option value="Jeddah">Jeddah</option>
-                                        <option value="Dammam">Dammam</option>
-                                        <option value="NEOM">NEOM</option>
-                                        <option value="Makkah">Makkah</option>
-                                    </optgroup>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="project-size">Project Size (m²)</label>
-                                <input type="number" id="project-size" placeholder="e.g., 25000" min="0">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="duration">Construction Duration (months)</label>
-                                <input type="number" id="duration" placeholder="e.g., 24" min="1">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="budget">Estimated Budget (Million AED/SAR)</label>
-                                <input type="number" id="budget" placeholder="e.g., 150" min="0">
-                            </div>
-                        </div>
-
-                        <div style="text-align: right; margin-top: 2rem;">
-                            <button class="btn btn-primary" onclick="nextStep()">
-                                Next: Environmental Screening
-                                <span>→</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 2: Environmental Screening -->
-                <div id="step2" class="step-content" style="display: none;">
-                    <div class="form-section">
-                        <h3>Environmental Screening</h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-                            Identify environmental sensitivities and regulatory requirements
-                        </p>
-
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label>Sensitive Receptors (Select all that apply)</label>
-                                <div style="margin-top: 1rem;">
-                                    <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                        <input type="checkbox" value="residential_area" style="margin-right: 0.5rem;">
-                                        Residential Areas
-                                    </label>
-                                    <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                        <input type="checkbox" value="school" style="margin-right: 0.5rem;">
-                                        Schools/Educational Facilities
-                                    </label>
-                                    <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                        <input type="checkbox" value="hospital" style="margin-right: 0.5rem;">
-                                        Hospitals/Healthcare
-                                    </label>
-                                    <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                        <input type="checkbox" value="mosque" style="margin-right: 0.5rem;">
-                                        Mosques/Religious Sites
-                                    </label>
-                                    <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                        <input type="checkbox" value="protected_area" style="margin-right: 0.5rem;">
-                                        Protected/Conservation Areas
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="water-usage">Daily Water Usage (m³/day)</label>
-                                <input type="number" id="water-usage" placeholder="e.g., 1200" min="0">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="nearest-receptor">Distance to Nearest Receptor (m)</label>
-                                <input type="number" id="nearest-receptor" placeholder="e.g., 100" min="0">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="existing-vegetation">Existing Vegetation</label>
-                                <select id="existing-vegetation">
-                                    <option value="none">None/Desert</option>
-                                    <option value="sparse">Sparse Vegetation</option>
-                                    <option value="moderate">Moderate Vegetation</option>
-                                    <option value="dense">Dense Vegetation/Trees</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
-                            <button class="btn btn-outline" onclick="prevStep()">
-                                <span>←</span>
-                                Previous
-                            </button>
-                            <button class="btn btn-primary" onclick="performScreening()">
-                                Perform Screening
-                                <span>→</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Screening Results -->
-                    <div id="screening-results" class="results-card" style="display: none; margin-top: 2rem;">
-                        <div class="results-header">
-                            <h3>Screening Results</h3>
-                            <span id="eia-required" class="impact-level"></span>
-                        </div>
-                        <div id="screening-details"></div>
-                    </div>
-                </div>
-
-                <!-- Step 3: Impact Analysis -->
-                <div id="step3" class="step-content" style="display: none;">
-                    <div class="form-section">
-                        <h3>Construction Impact Analysis</h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-                            Assess potential impacts during construction phase
-                        </p>
-
-                        <!-- Noise Impact -->
-                        <div class="results-card">
-                            <h4>🔊 Noise Impact Assessment</h4>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label>Construction Equipment (Select all)</label>
-                                    <div style="margin-top: 1rem;">
-                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                            <input type="checkbox" value="excavator" checked style="margin-right: 0.5rem;">
-                                            Excavator
-                                        </label>
-                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                            <input type="checkbox" value="bulldozer" style="margin-right: 0.5rem;">
-                                            Bulldozer
-                                        </label>
-                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                            <input type="checkbox" value="pile_driver" style="margin-right: 0.5rem;">
-                                            Pile Driver
-                                        </label>
-                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                            <input type="checkbox" value="concrete_mixer" checked style="margin-right: 0.5rem;">
-                                            Concrete Mixer
-                                        </label>
-                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                            <input type="checkbox" value="crane" checked style="margin-right: 0.5rem;">
-                                            Crane
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="working-hours">Working Hours</label>
-                                    <select id="working-hours">
-                                        <option value="07:00-18:00">07:00 - 18:00 (Standard)</option>
-                                        <option value="06:00-22:00">06:00 - 22:00 (Extended)</option>
-                                        <option value="24hours">24 Hours</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="noise-barriers">Noise Barriers</label>
-                                    <select id="noise-barriers">
-                                        <option value="none">None</option>
-                                        <option value="temporary">Temporary Barriers</option>
-                                        <option value="permanent">Permanent Barriers</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Dust Impact -->
-                        <div class="results-card" style="margin-top: 2rem;">
-                            <h4>💨 Dust & Air Quality Assessment</h4>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="soil-type">Soil Type</label>
-                                    <select id="soil-type">
-                                        <option value="sandy">Sandy (Common in UAE/KSA)</option>
-                                        <option value="clay">Clay</option>
-                                        <option value="silt">Silt</option>
-                                        <option value="rocky">Rocky</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="wind-speed">Average Wind Speed (km/h)</label>
-                                    <input type="number" id="wind-speed" value="15" min="0">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Dust Mitigation Measures</label>
-                                    <div style="margin-top: 1rem;">
-                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                            <input type="checkbox" value="water_spraying" checked style="margin-right: 0.5rem;">
-                                            Water Spraying
-                                        </label>
-                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                            <input type="checkbox" value="barriers" style="margin-right: 0.5rem;">
-                                            Dust Barriers
-                                        </label>
-                                        <label style="display: flex; align-items: center; margin-bottom: 0.5rem; font-weight: normal;">
-                                            <input type="checkbox" value="covering" style="margin-right: 0.5rem;">
-                                            Material Covering
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
-                            <button class="btn btn-outline" onclick="prevStep()">
-                                <span>←</span>
-                                Previous
-                            </button>
-                            <button class="btn btn-primary" onclick="analyzeImpacts()">
-                                Analyze Impacts
-                                <span>→</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 4: Results & Mitigation -->
-                <div id="step4" class="step-content" style="display: none;">
-                    <div class="form-section">
-                        <h3>Assessment Results & Mitigation Plan</h3>
-
-                        <!-- Impact Summary -->
-                        <div class="metrics-grid">
-                            <div class="metric-card">
-                                <div class="metric-value" id="noise-level">--</div>
-                                <div class="metric-label">Peak Noise Level (dB)</div>
-                            </div>
-                            <div class="metric-card">
-                                <div class="metric-value" id="dust-pm10">--</div>
-                                <div class="metric-label">PM10 Concentration (μg/m³)</div>
-                            </div>
-                            <div class="metric-card">
-                                <div class="metric-value" id="affected-area">--</div>
-                                <div class="metric-label">Affected Area (m)</div>
-                            </div>
-                            <div class="metric-card">
-                                <div class="metric-value" id="compliance-score">--</div>
-                                <div class="metric-label">Compliance Score</div>
-                            </div>
-                        </div>
-
-                        <!-- Detailed Results -->
-                        <div id="detailed-results"></div>
-
-                        <!-- Mitigation Measures -->
-                        <div class="results-card" style="margin-top: 2rem;">
-                            <h4>🛡️ Recommended Mitigation Measures</h4>
-                            <ul class="mitigation-list" id="mitigation-list"></ul>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
-                            <button class="btn btn-primary" onclick="downloadReport()">
-                                📥 Download Report
-                            </button>
-                            <button class="btn btn-secondary" onclick="shareResults()">
-                                📤 Share Results
-                            </button>
-                            <button class="btn btn-outline" onclick="startNewAssessment()">
-                                🔄 New Assessment
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Loading State -->
-        <div class="loading">
-            <div class="spinner"></div>
-            <p>Analyzing environmental impacts...</p>
-        </div>
-
-        <!-- Info Section -->
-        <section id="methodology" style="margin-top: 4rem;">
-            <h2 style="text-align: center; margin-bottom: 3rem; color: var(--primary-dark);">
-                Our Assessment Methodology
-            </h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <h4>📋 Comprehensive Screening</h4>
-                    <p>Initial screening based on project size, location, and environmental sensitivity to determine EIA requirements according to UAE and KSA regulations.</p>
-                </div>
-                <div class="info-card">
-                    <h4>🔊 Noise Modeling</h4>
-                    <p>Advanced noise propagation modeling considering equipment types, distance attenuation, and barrier effects. Compliant with local noise standards.</p>
-                </div>
-                <div class="info-card">
-                    <h4>💨 Dust Dispersion Analysis</h4>
-                    <p>PM10 and PM2.5 concentration modeling adapted for arid climates, considering soil types, wind patterns, and mitigation effectiveness.</p>
-                </div>
-                <div class="info-card">
-                    <h4>🏗️ Construction-Specific</h4>
-                    <p>Tailored assessments for construction activities including excavation, pile driving, concrete works, and material transport.</p>
-                </div>
-                <div class="info-card">
-                    <h4>📊 Regulatory Compliance</h4>
-                    <p>Automatic checking against UAE Federal Law No. 24, local municipality requirements, and KSA environmental regulations.</p>
-                </div>
-                <div class="info-card">
-                    <h4>🌿 Mitigation Planning</h4>
-                    <p>Evidence-based mitigation recommendations with quantified effectiveness for reducing environmental impacts.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="features">
-            <h2 style="text-align: center; margin-bottom: 3rem;">Key Features</h2>
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Accurate Assessments</h3>
-                    <p>Science-based calculations using internationally recognized methodologies</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Instant Results</h3>
-                    <p>Get comprehensive environmental impact analysis in minutes, not weeks</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📱</div>
-                    <h3>Mobile Ready</h3>
-                    <p>Access from any device - desktop, tablet, or mobile phone</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Data Security</h3>
-                    <p>Your project data is processed securely and never stored</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Regional Expertise</h3>
-                    <p>Specifically designed for UAE and Saudi Arabia environments</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📈</div>
-                    <h3>Professional Reports</h3>
-                    <p>Generate submission-ready reports for regulatory authorities</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-        <p><strong>Environmental Impact Assessment Tool</strong></p>
-        <p>Created by <a href="https://github.com/edybass" target="_blank">Edy Bassil</a> |
-           <a href="mailto:bassileddy@gmail.com">bassileddy@gmail.com</a></p>
-        <p style="margin-top: 1rem;">Supporting sustainable development in the Gulf region 🌱</p>
     </footer>
 
+    <!-- Configuration -->
+    <script src="config.js"></script>
+    
     <script>
-        // Current step tracker
-        let currentStep = 1;
+        // API endpoint is now loaded from config.js
+        // const API_URL is defined in config.js
 
-        // Project data storage
-        const projectData = {
-            screening: {},
-            impacts: {}
-        };
-
-        // Step navigation
-        function showStep(step) {
-            // Hide all steps
-            document.querySelectorAll('.step-content').forEach(content => {
-                content.style.display = 'none';
-            });
-
-            // Show selected step
-            document.getElementById(`step${step}`).style.display = 'block';
-
-            // Update step indicators
-            document.querySelectorAll('.wizard-step').forEach((stepEl, index) => {
-                if (index + 1 === step) {
-                    stepEl.classList.add('active');
-                } else {
-                    stepEl.classList.remove('active');
-                }
-            });
-
-            currentStep = step;
-        }
-
-        function nextStep() {
-            if (validateStep(currentStep)) {
-                showStep(currentStep + 1);
-            }
-        }
-
-        function prevStep() {
-            showStep(currentStep - 1);
-        }
-
-        function validateStep(step) {
-            if (step === 1) {
-                const name = document.getElementById('project-name').value;
-                const size = document.getElementById('project-size').value;
-                const duration = document.getElementById('duration').value;
-
-                if (!name || !size || !duration) {
-                    alert('Please fill in all required fields');
+        // Form validation
+        function validateForm() {
+            const form = document.getElementById('assessmentForm');
+            const requiredFields = form.querySelectorAll('[required]');
+            
+            for (let field of requiredFields) {
+                if (!field.value.trim()) {
+                    alert(`Please fill in the ${field.previousElementSibling.textContent.replace('*', '')} field.`);
+                    field.focus();
                     return false;
                 }
-
-                // Store project info
-                projectData.name = name;
-                projectData.type = document.getElementById('project-type').value;
-                projectData.location = document.getElementById('location').value;
-                projectData.size = parseFloat(size);
-                projectData.duration = parseInt(duration);
             }
-
+            
             return true;
         }
 
-        function performScreening() {
-            // Get sensitive receptors
-            const receptors = [];
-            document.querySelectorAll('#step2 input[type="checkbox"]:checked').forEach(cb => {
-                receptors.push(cb.value);
-            });
+        // Run comprehensive assessment
+        async function runComprehensiveAssessment() {
+            if (!validateForm()) return;
 
-            const waterUsage = parseFloat(document.getElementById('water-usage').value) || 0;
-            const nearestReceptor = parseFloat(document.getElementById('nearest-receptor').value) || 100;
+            // Show loading
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('results').style.display = 'none';
 
-            // Store screening data
-            projectData.screening = {
-                sensitiveReceptors: receptors,
-                waterUsage: waterUsage,
-                nearestReceptor: nearestReceptor,
-                vegetation: document.getElementById('existing-vegetation').value
+            // Gather form data
+            const formData = {
+                name: document.getElementById('projectName').value,
+                type: document.getElementById('projectType').value,
+                location: document.getElementById('location').value,
+                size: parseFloat(document.getElementById('projectSize').value),
+                duration: parseInt(document.getElementById('duration').value) || 24,
+                budget: parseFloat(document.getElementById('budget').value) || 1,
+                workers: parseInt(document.getElementById('workers').value) || 100,
+                nearest_receptor: parseFloat(document.getElementById('nearestReceptor').value) || 100,
+                soil_type: document.getElementById('soilType').value || 'sandy',
+                water_usage: parseFloat(document.getElementById('waterUsage').value) || 1000,
+                working_hours: document.getElementById('workingHours').value || '07:00-18:00',
+                wind_speed: parseFloat(document.getElementById('windSpeed').value) || 15,
+                temperature: parseFloat(document.getElementById('temperature').value) || 28,
+                vegetation: document.getElementById('vegetation').value || 'none',
+                sensitive_receptors: Array.from(document.getElementById('sensitiveReceptors').selectedOptions).map(o => o.value),
+                existing_air_quality: document.getElementById('existingAirQuality').value || 'moderate',
+                noise_baseline: parseFloat(document.getElementById('noiseBaseline').value) || 55
             };
 
-            // Perform screening logic
-            let eiaRequired = false;
-            let eiaLevel = 'none';
-            const concerns = [];
-
-            // Check triggers
-            if (projectData.size > 10000) {
-                eiaRequired = true;
-                concerns.push(`Large project size (${projectData.size.toLocaleString()} m²)`);
-            }
-
-            if (receptors.length > 0) {
-                eiaRequired = true;
-                concerns.push(`Near sensitive receptors: ${receptors.join(', ')}`);
-            }
-
-            if (waterUsage > 500) {
-                concerns.push(`High water usage (${waterUsage} m³/day)`);
-            }
-
-            if (receptors.includes('protected_area')) {
-                eiaLevel = 'full';
-            } else if (eiaRequired) {
-                eiaLevel = concerns.length > 2 ? 'full' : 'limited';
-            }
-
-            // Display results
-            const resultsDiv = document.getElementById('screening-results');
-            const requiredSpan = document.getElementById('eia-required');
-            const detailsDiv = document.getElementById('screening-details');
-
-            resultsDiv.style.display = 'block';
-
-            if (eiaRequired) {
-                requiredSpan.textContent = `EIA Required - ${eiaLevel.toUpperCase()}`;
-                requiredSpan.className = 'impact-level impact-high';
-            } else {
-                requiredSpan.textContent = 'EIA Not Required';
-                requiredSpan.className = 'impact-level impact-low';
-            }
-
-            detailsDiv.innerHTML = `
-                <h4>Key Findings:</h4>
-                <ul style="margin-top: 1rem;">
-                    ${concerns.map(c => `<li>${c}</li>`).join('')}
-                </ul>
-                ${eiaRequired ? `
-                    <h4 style="margin-top: 1.5rem;">Required Studies:</h4>
-                    <ul style="margin-top: 1rem;">
-                        <li>Environmental Baseline Survey</li>
-                        <li>Noise and Air Quality Modeling</li>
-                        ${waterUsage > 1000 ? '<li>Water Resources Assessment</li>' : ''}
-                        ${receptors.includes('protected_area') ? '<li>Ecological Impact Assessment</li>' : ''}
-                        <li>Construction Environmental Management Plan</li>
-                    </ul>
-                ` : ''}
-            `;
-
-            // Enable next step after screening
-            setTimeout(() => {
-                nextStep();
-            }, 2000);
-        }
-
-        async function analyzeImpacts() {
-            showLoading();
-
-            // Get selected equipment
-            const equipment = [];
-            document.querySelectorAll('#step3 input[type="checkbox"]:checked').forEach(cb => {
-                if (cb.value !== 'water_spraying' && cb.value !== 'barriers' && cb.value !== 'covering') {
-                    equipment.push(cb.value);
-                }
-            });
-
-            // Get mitigation measures
-            const mitigation = [];
-            document.querySelectorAll('#step3 input[value="water_spraying"], #step3 input[value="barriers"], #step3 input[value="covering"]').forEach(cb => {
-                if (cb.checked) {
-                    mitigation.push(cb.value);
-                }
-            });
-
-            // Prepare data for backend API
-            const assessmentData = {
-                name: projectData.name,
-                type: projectData.type,
-                location: projectData.location,
-                size: projectData.size,
-                duration: projectData.duration,
-                latitude: 25.276987, // Default Dubai coordinates
-                longitude: 55.296249,
-                modules: ['air_modeling', 'noise_modeling', 'gis_analysis', 'stakeholder_engagement', 'baseline_studies'],
-                equipment: equipment,
-                mitigation: mitigation,
-                wind_speed: parseFloat(document.getElementById('wind-speed').value) || 15,
-                soil_type: document.getElementById('soil-type').value,
-                working_hours: document.getElementById('working-hours').value,
-                nearest_receptor: projectData.screening.nearestReceptor
-            };
-
+            console.log('Sending assessment request to:', `${API_URL}/comprehensive-assess`);
+            console.log('Form data:', formData);
+            
             try {
-                // Call the backend API
-                const response = await fetch('/api/assess-project', {
+                // Call comprehensive assessment endpoint
+                const response = await fetch(`${API_URL}/comprehensive-assess`, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(assessmentData)
+                    body: JSON.stringify(formData)
                 });
 
+                console.log('Response status:', response.status);
+                
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    const errorData = await response.text();
+                    console.error('API Error Response:', errorData);
+                    throw new Error(`Assessment failed: ${response.status} ${response.statusText}`);
                 }
 
-                const results = await response.json();
-
-                if (results.status === 'success') {
-                    // Store results from backend
-                    projectData.impacts = {
-                        noiseLevel: results.basic_impacts.noise_score * 10, // Convert to dB
-                        dustPM10: (100 - results.basic_impacts.air_quality_score * 10).toFixed(1),
-                        dustPM25: ((100 - results.basic_impacts.air_quality_score * 10) * 0.4).toFixed(1),
-                        affectedRadius: 200
-                    };
-                    
-                    // Store advanced results for display
-                    projectData.advancedResults = results.advanced_results;
-                    
-                    hideLoading();
-                    showStep(4);
-                    displayResults();
-                } else {
-                    throw new Error(results.message || 'Assessment failed');
-                }
+                const data = await response.json();
+                console.log('Assessment successful! Response:', data);
+                
+                // Store project and assessment IDs for report generation
+                if (data.project_id) window.lastProjectId = data.project_id;
+                if (data.assessment_id) window.lastAssessmentId = data.assessment_id;
+                
+                displayResults(data);
 
             } catch (error) {
-                console.error('API Error:', error);
+                console.error('Assessment error:', error);
+                // Show more detailed error
+                const errorMsg = error.message || 'Unknown error';
+                alert(`An error occurred during the assessment:\n\n${errorMsg}\n\nPlease check:\n1. Backend is running (python backend_comprehensive.py)\n2. API is accessible at ${API_URL}\n3. All required fields are filled`);
                 
-                // Fallback to local calculations if API fails
-                const baseNoise = {
-                    'excavator': 85, 'bulldozer': 85, 'pile_driver': 95,
-                    'concrete_mixer': 85, 'crane': 75
-                };
-
-                let maxNoise = 0;
-                equipment.forEach(eq => {
-                    const noise = baseNoise[eq] || 80;
-                    maxNoise = Math.max(maxNoise, noise);
-                });
-
-                const distance = projectData.screening.nearestReceptor;
-                const attenuatedNoise = maxNoise - 20 * Math.log10(distance / 10);
-                const windSpeed = parseFloat(document.getElementById('wind-speed').value) || 15;
-                let baseDust = 100 * (windSpeed / 10);
-                const mitigationEffect = mitigation.length * 0.3;
-                baseDust *= (1 - Math.min(0.85, mitigationEffect));
-
-                projectData.impacts = {
-                    noiseLevel: attenuatedNoise.toFixed(1),
-                    dustPM10: baseDust.toFixed(1),
-                    dustPM25: (baseDust * 0.4).toFixed(1),
-                    affectedRadius: windSpeed < 10 ? 100 : windSpeed < 20 ? 200 : 500
-                };
-
-                hideLoading();
-                showStep(4);
-                displayResults();
+                // Try to get more error details
+                if (error.response) {
+                    error.response.text().then(text => console.error('Error details:', text));
+                }
+            } finally {
+                document.getElementById('loading').classList.remove('active');
             }
         }
 
-        function displayResults() {
-            // Update metrics
-            document.getElementById('noise-level').textContent = projectData.impacts.noiseLevel;
-            document.getElementById('dust-pm10').textContent = projectData.impacts.dustPM10;
-            document.getElementById('affected-area').textContent = projectData.impacts.affectedRadius;
+        // Display assessment results
+        function displayResults(data) {
+            document.getElementById('results').style.display = 'block';
+            
+            // Update compliance score
+            const score = data.summary.compliance_score;
+            const scoreElement = document.getElementById('complianceScore');
+            scoreElement.textContent = score + '%';
+            scoreElement.className = score >= 80 ? 'score-value high' : 
+                                   score >= 60 ? 'score-value medium' : 'score-value low';
 
-            // Calculate compliance score
-            const noiseCompliant = projectData.impacts.noiseLevel < 65;
-            const dustCompliant = projectData.impacts.dustPM10 < 150;
-            const score = (noiseCompliant && dustCompliant) ? '✓' : '!';
-            document.getElementById('compliance-score').textContent = score;
+            // Display results grid
+            const resultsGrid = document.getElementById('resultsGrid');
+            resultsGrid.innerHTML = '';
 
-            // Build advanced results HTML
-            let advancedHTML = '';
-            if (projectData.advancedResults) {
-                advancedHTML = '<h5 style="margin-top: 1.5rem;">🚀 Advanced Module Results:</h5>';
-                Object.entries(projectData.advancedResults).forEach(([module, data]) => {
-                    advancedHTML += `
-                        <div style="background: #f0f8ff; padding: 10px; margin: 10px 0; border-radius: 5px; border-left: 4px solid #2196f3;">
-                            <strong>${data.module || module}</strong><br>
-                            Status: ${data.status || 'completed'} ✅<br>
-                            ${data.sources_identified ? `Sources: ${data.sources_identified}<br>` : ''}
-                            ${data.receptors_found ? `Receptors: ${data.receptors_found}<br>` : ''}
-                            ${data.stakeholders_identified ? `Stakeholders: ${data.stakeholders_identified}<br>` : ''}
-                            ${data.sampling_locations ? `Sampling Locations: ${data.sampling_locations}<br>` : ''}
-                            ${data.cost_estimate ? `Cost Estimate: $${data.cost_estimate.toLocaleString()}<br>` : ''}
-                        </div>
-                    `;
-                });
+            const modules = [
+                { key: 'air_quality', title: 'Air Quality', icon: '🌬️', color: '--air-color' },
+                { key: 'noise_assessment', title: 'Noise Impact', icon: '🔊', color: '--noise-color' },
+                { key: 'water_resources', title: 'Water Resources', icon: '💧', color: '--water-color' },
+                { key: 'waste_management', title: 'Waste Management', icon: '♻️', color: '--waste-color' },
+                { key: 'biological_environment', title: 'Biodiversity', icon: '🦋', color: '--bio-color' },
+                { key: 'soil_geology', title: 'Soil & Geology', icon: '🏔️', color: '--soil-color' },
+                { key: 'socio_economic', title: 'Socio-Economic', icon: '👥', color: '--socio-color' },
+                { key: 'risk_assessment', title: 'Risk Assessment', icon: '⚠️', color: '--risk-color' },
+                { key: 'environmental_management_plan', title: 'EMP', icon: '📊', color: '--emp-color' }
+            ];
+
+            modules.forEach(module => {
+                const result = data.assessment_results[module.key];
+                if (result && result.status === 'assessed') {
+                    const card = createResultCard(module, result);
+                    resultsGrid.appendChild(card);
+                }
+            });
+
+            // Display critical issues
+            if (data.summary.critical_issues && data.summary.critical_issues.length > 0) {
+                document.getElementById('criticalIssues').style.display = 'block';
+                const issuesList = document.getElementById('issuesList');
+                issuesList.innerHTML = data.summary.critical_issues
+                    .map(issue => `<li>${issue}</li>`)
+                    .join('');
+            } else {
+                document.getElementById('criticalIssues').style.display = 'none';
             }
 
-            // Detailed results
-            const detailsDiv = document.getElementById('detailed-results');
-            detailsDiv.innerHTML = `
-                <div class="results-card">
-                    <h4>📊 Complete Impact Assessment Summary</h4>
-                    <p><strong>Project:</strong> ${projectData.name}</p>
-                    <p><strong>Location:</strong> ${projectData.location}</p>
-                    <p><strong>Type:</strong> ${projectData.type}</p>
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
 
-                    <div style="margin-top: 1.5rem;">
-                        <h5>Noise Impact:</h5>
-                        <p>Peak Level: ${projectData.impacts.noiseLevel} dB(A) ${noiseCompliant ? '✅ Compliant' : '⚠️ Exceeds limit'}</p>
+        // Create result card
+        function createResultCard(module, result) {
+            const card = document.createElement('div');
+            card.className = 'result-card';
+            
+            // Determine compliance status
+            let status = 'compliant';
+            let statusText = 'Compliant';
+            
+            if (result.compliance) {
+                if (result.compliance.includes('Non-compliant')) {
+                    status = 'non-compliant';
+                    statusText = 'Non-Compliant';
+                } else if (result.compliance.includes('Review') || result.compliance.includes('Mitigation')) {
+                    status = 'review';
+                    statusText = 'Review Required';
+                }
+            }
 
-                        <h5 style="margin-top: 1rem;">Air Quality Impact:</h5>
-                        <p>PM10: ${projectData.impacts.dustPM10} μg/m³ ${dustCompliant ? '✅ Compliant' : '⚠️ Exceeds limit'}</p>
-                        <p>PM2.5: ${projectData.impacts.dustPM25} μg/m³</p>
-                        
-                        ${advancedHTML}
-                        
-                        <div style="background: #e8f5e8; padding: 15px; margin-top: 20px; border-radius: 8px;">
-                            <h5 style="color: #2e7d32; margin-bottom: 10px;">🎯 Backend Integration Status</h5>
-                            <p style="margin: 5px 0;">✅ Advanced modules connected and operational</p>
-                            <p style="margin: 5px 0;">✅ All 50+ Python modules working together</p>
-                            <p style="margin: 5px 0;">✅ Professional algorithms: Air dispersion, Noise propagation, GIS analysis</p>
-                            <p style="margin: 5px 0;">✅ Real-time stakeholder management and baseline planning</p>
+            // Select key metrics to display
+            const metrics = getKeyMetrics(module.key, result);
+
+            card.innerHTML = `
+                <div class="result-card-header">
+                    <div class="result-icon" style="background: rgba(var(${module.color}), 0.1); color: var(${module.color})">
+                        ${module.icon}
+                    </div>
+                    <span class="result-title">${module.title}</span>
+                </div>
+                <div class="result-metrics">
+                    ${metrics.map(metric => `
+                        <div class="metric">
+                            <span class="metric-label">${metric.label}</span>
+                            <span class="metric-value">${metric.value}</span>
                         </div>
+                    `).join('')}
+                    <div class="metric">
+                        <span class="metric-label">Status</span>
+                        <span class="status-badge status-${status}">${statusText}</span>
                     </div>
                 </div>
             `;
-
-            // Mitigation measures
-            const mitigationList = document.getElementById('mitigation-list');
-            const measures = [];
-
-            if (!noiseCompliant) {
-                measures.push({
-                    icon: '🔇',
-                    text: 'Install 3m high noise barriers around site perimeter'
-                });
-                measures.push({
-                    icon: '⏰',
-                    text: 'Restrict high-noise activities to 08:00-17:00'
-                });
-                measures.push({
-                    icon: '🔧',
-                    text: 'Use quieter equipment models where available'
-                });
-            }
-
-            if (!dustCompliant || projectData.impacts.dustPM10 > 75) {
-                measures.push({
-                    icon: '💧',
-                    text: 'Water spraying every 2 hours during dry conditions'
-                });
-                measures.push({
-                    icon: '🚧',
-                    text: 'Install windbreak barriers on site boundaries'
-                });
-                measures.push({
-                    icon: '🚛',
-                    text: 'Cover all trucks carrying loose materials'
-                });
-            }
-
-            measures.push({
-                icon: '📋',
-                text: 'Implement daily environmental monitoring program'
-            });
-            measures.push({
-                icon: '👷',
-                text: 'Conduct weekly environmental training for workers'
-            });
-
-            mitigationList.innerHTML = measures.map(m => `
-                <li class="mitigation-item">
-                    <span class="mitigation-icon">${m.icon}</span>
-                    <span>${m.text}</span>
-                </li>
-            `).join('');
+            
+            return card;
         }
 
-        function showLoading() {
-            document.querySelector('.loading').style.display = 'block';
-        }
-
-        function hideLoading() {
-            document.querySelector('.loading').style.display = 'none';
-        }
-
-        function downloadReport() {
-            // Create report data
-            const report = {
-                projectInfo: projectData,
-                assessmentDate: new Date().toISOString(),
-                results: {
-                    screening: projectData.screening,
-                    impacts: projectData.impacts
-                },
-                recommendations: 'See mitigation measures above'
+        // Get key metrics for each module
+        function getKeyMetrics(moduleKey, result) {
+            const metricsMap = {
+                'air_quality': [
+                    { label: 'PM10', value: result.pm10_concentration + ' µg/m³' },
+                    { label: 'PM2.5', value: result.pm25_concentration + ' µg/m³' },
+                    { label: 'Mitigation', value: result.mitigation_effectiveness + '%' }
+                ],
+                'noise_assessment': [
+                    { label: 'Peak Level', value: result.peak_noise_level + ' dB(A)' },
+                    { label: 'Equipment', value: result.equipment_count + ' units' },
+                    { label: 'Attenuation', value: result.distance_attenuation + ' dB' }
+                ],
+                'water_resources': [
+                    { label: 'Water Demand', value: Math.round(result.operational_water_demand_m3_year) + ' m³/yr' },
+                    { label: 'Recycling', value: result.recycling_potential + '%' },
+                    { label: 'Sustainability', value: result.water_sustainability_score + '/100' }
+                ],
+                'waste_management': [
+                    { label: 'Construction', value: Math.round(result.construction_waste_tons) + ' tons' },
+                    { label: 'Recycling', value: result.construction_recycling_rate + '%' },
+                    { label: 'Cost', value: '$' + Math.round(result.disposal_cost_total).toLocaleString() }
+                ],
+                'biological_environment': [
+                    { label: 'Habitats', value: result.habitat_types + ' types' },
+                    { label: 'Species', value: result.species_affected + ' affected' },
+                    { label: 'Critical', value: result.critical_species + ' species' }
+                ],
+                'soil_geology': [
+                    { label: 'Soil Type', value: result.soil_type },
+                    { label: 'Erosion Risk', value: result.erosion_risk },
+                    { label: 'Seismic Zone', value: result.seismic_zone }
+                ],
+                'socio_economic': [
+                    { label: 'Workers', value: result.construction_workers },
+                    { label: 'Traffic', value: result.traffic_trips_daily + ' trips/day' },
+                    { label: 'Heritage Sites', value: result.heritage_sites_affected }
+                ],
+                'risk_assessment': [
+                    { label: 'Total Risks', value: result.total_risks_identified },
+                    { label: 'High Priority', value: result.high_priority_risks },
+                    { label: 'Mitigation Cost', value: '$' + Math.round(result.mitigation_cost).toLocaleString() }
+                ],
+                'environmental_management_plan': [
+                    { label: 'Components', value: result.total_components },
+                    { label: 'Measures', value: result.mitigation_measures },
+                    { label: 'Annual Cost', value: '$' + Math.round(result.annual_operating_cost).toLocaleString() }
+                ]
             };
 
-            // Convert to JSON and download
-            const dataStr = JSON.stringify(report, null, 2);
-            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
-
-            const exportFileDefaultName = `EIA_${projectData.name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.json`;
-
-            const linkElement = document.createElement('a');
-            linkElement.setAttribute('href', dataUri);
-            linkElement.setAttribute('download', exportFileDefaultName);
-            linkElement.click();
+            return metricsMap[moduleKey] || [];
         }
 
-        function shareResults() {
-            const text = `Environmental Impact Assessment completed for ${projectData.name} in ${projectData.location}. Noise: ${projectData.impacts.noiseLevel} dB, PM10: ${projectData.impacts.dustPM10} μg/m³`;
-
-            if (navigator.share) {
-                navigator.share({
-                    title: 'EIA Results',
-                    text: text,
-                    url: window.location.href
+        // Store project ID globally for report generation
+        window.lastProjectId = null;
+        window.lastAssessmentId = null;
+        
+        // Generate professional report
+        async function generateReport() {
+            // Check if we have assessment results
+            const resultsSection = document.getElementById('results');
+            if (!resultsSection || resultsSection.style.display === 'none') {
+                alert('Please run an assessment first before generating a report.');
+                return;
+            }
+            
+            // Get the project name
+            const projectName = document.getElementById('projectName').value;
+            
+            // Show loading state
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.disabled = true;
+            button.innerHTML = '<span>⏳</span> Generating Report...';
+            
+            try {
+                // Call the report generation API
+                const response = await fetch(`${API_URL}/generate-professional-report`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        project_id: window.lastProjectId || 'current',
+                        assessment_id: window.lastAssessmentId,
+                        format: 'pdf'
+                    })
                 });
-            } else {
-                navigator.clipboard.writeText(text).then(() => {
-                    alert('Results copied to clipboard!');
-                });
+                
+                if (!response.ok) {
+                    // Try to get error message
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Report generation failed');
+                }
+                
+                // Check if response is PDF
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/pdf')) {
+                    // Convert response to blob
+                    const blob = await response.blob();
+                    
+                    // Create download link
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = `EIA_Report_${projectName.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`;
+                    
+                    // Trigger download
+                    document.body.appendChild(a);
+                    a.click();
+                    
+                    // Cleanup
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                    
+                    // Success message
+                    showNotification('✅ Professional EIA report generated and downloaded successfully!', 'success');
+                } else {
+                    // Handle non-PDF response (fallback to HTML)
+                    const data = await response.json();
+                    console.log('Report metadata:', data);
+                    
+                    if (!data.report_metadata || !data.report_metadata.reportlab_available) {
+                        // ReportLab not available, try HTML format
+                        const htmlResponse = await fetch(`${API_URL}/generate-professional-report`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                project_id: window.lastProjectId || 'current',
+                                assessment_id: window.lastAssessmentId,
+                                format: 'html'
+                            })
+                        });
+                        
+                        if (htmlResponse.ok) {
+                            const htmlContent = await htmlResponse.text();
+                            const htmlBlob = new Blob([htmlContent], { type: 'text/html' });
+                            const htmlUrl = window.URL.createObjectURL(htmlBlob);
+                            
+                            // Open in new tab
+                            const newWindow = window.open(htmlUrl, '_blank');
+                            
+                            showNotification('📄 Report opened in new tab. Use browser\'s print function (Ctrl+P) to save as PDF.', 'info');
+                            
+                            // Clean up after a delay
+                            setTimeout(() => window.URL.revokeObjectURL(htmlUrl), 60000);
+                        }
+                    }
+                }
+                
+            } catch (error) {
+                console.error('Report generation error:', error);
+                showNotification(`❌ Error generating report: ${error.message}`, 'error');
+                
+                // Fallback message
+                alert(`Report generation encountered an issue.\n\nFor now, you can:\n1. Take screenshots of the results\n2. Use browser print function (Ctrl+P)\n3. Install ReportLab for PDF generation:\n   pip install reportlab\n\nError: ${error.message}`);
+            } finally {
+                // Restore button state
+                button.disabled = false;
+                button.innerHTML = originalText;
             }
         }
+        
+        // Helper function to show notifications
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 16px 24px;
+                background: ${type === 'success' ? '#059669' : type === 'error' ? '#ef4444' : '#3b82f6'};
+                color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                z-index: 1000;
+                animation: slideIn 0.3s ease;
+                max-width: 400px;
+                font-family: 'Inter', sans-serif;
+            `;
+            notification.textContent = message;
+            
+            // Add animation if not already defined
+            if (!document.getElementById('notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 5000);
+        }
 
-        function startNewAssessment() {
-            if (confirm('Start a new assessment? Current data will be lost.')) {
-                location.reload();
+        // Export results
+        function exportResults() {
+            alert('Exporting assessment results...\nResults will be exported in multiple formats (PDF, Excel, JSON).');
+        }
+
+        // Reset form
+        function resetForm() {
+            if (confirm('Are you sure you want to reset all form data?')) {
+                document.getElementById('assessmentForm').reset();
+                document.getElementById('results').style.display = 'none';
             }
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('EIA Tool initialized');
-            console.log('Created by Edy Bassil - bassileddy@gmail.com');
+            // Add enter key support for form submission
+            document.getElementById('assessmentForm').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    runComprehensiveAssessment();
+                }
+            });
         });
     </script>
-
-    <!-- Beta Signup Section -->
-    <div id="beta-signup" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%); color: white; padding: 80px 0;">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 20px;">🚀 Version 5.0 Beta Access</h2>
-            <p style="text-align: center; font-size: 1.3rem; margin-bottom: 40px; opacity: 0.95;">
-                Be among the first 100 organizations to experience complete EIA automation
-            </p>
-            
-            <div style="max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.1); border-radius: 15px; padding: 40px; backdrop-filter: blur(10px);">
-                <h3 style="margin-bottom: 25px; text-align: center;">Apply Now - Limited Spots Remaining</h3>
-                <form style="display: grid; gap: 20px;">
-                    <input type="text" placeholder="Company Name" style="padding: 15px; border: none; border-radius: 8px; font-size: 1rem;">
-                    <input type="email" placeholder="Work Email" style="padding: 15px; border: none; border-radius: 8px; font-size: 1rem;">
-                    <input type="tel" placeholder="Phone Number" style="padding: 15px; border: none; border-radius: 8px; font-size: 1rem;">
-                    <select style="padding: 15px; border: none; border-radius: 8px; font-size: 1rem;">
-                        <option>Select Industry</option>
-                        <option>Construction & Real Estate</option>
-                        <option>Energy & Utilities</option>
-                        <option>Infrastructure</option>
-                        <option>Manufacturing</option>
-                        <option>Oil & Gas</option>
-                        <option>Mining & Extractives</option>
-                    </select>
-                    <textarea placeholder="Why do you need V5.0 beta access?" style="padding: 15px; border: none; border-radius: 8px; font-size: 1rem; min-height: 100px; resize: vertical;"></textarea>
-                    <button type="submit" style="background: white; color: #ff6b6b; padding: 18px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        Submit Beta Application
-                    </button>
-                </form>
-                
-                <div style="margin-top: 30px; text-align: center; font-size: 0.9rem; opacity: 0.9;">
-                    <p>✅ 50% lifetime discount for beta participants</p>
-                    <p>✅ Direct access to development team</p>
-                    <p>✅ Priority feature requests</p>
-                    <p>✅ Case study opportunities</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Contact Footer -->
-    <footer style="background: #2c3e50; color: white; padding: 40px 0; text-align: center;">
-        <div class="container">
-            <h3>Contact the Creator</h3>
-            <p style="font-size: 1.1rem; margin: 20px 0;">
-                <strong>Edy Bassil</strong> - Environmental Technology Expert<br>
-                Email: <a href="mailto:bassileddy@gmail.com" style="color: #4CAF50;">bassileddy@gmail.com</a>
-            </p>
-            <p style="opacity: 0.8;">EIA Pro Platform - Where Environmental Excellence Meets Artificial Intelligence</p>
-            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">
-                © 2024 EIA Pro Platform | Revolutionizing Environmental Assessment Worldwide
-            </p>
-        </div>
-    </footer>
 </body>
 </html>
